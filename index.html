@@ -3,352 +3,361 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Processes – Study Guide</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<title>Processes — Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0d0f14;
-    --surface: #13161e;
-    --surface2: #1a1e29;
-    --border: #252a38;
-    --accent1: #7ee8a2;
-    --accent2: #4fb3ff;
-    --accent3: #ff8c6b;
-    --accent4: #c084fc;
-    --accent5: #fbbf24;
-    --text: #e8eaf0;
-    --muted: #8890a8;
-    --heading: #ffffff;
-  }
+:root {
+  --bg: #f5f0e8;
+  --bg2: #ede8de;
+  --surface: #ffffff;
+  --border: #d8d0c0;
+  --border2: #c8bfad;
+  --ink: #1a1612;
+  --ink2: #4a4038;
+  --muted: #8a7e6e;
+  --a1: #c0392b; /* red */
+  --a2: #1a5276; /* dark blue */
+  --a3: #1e8449; /* green */
+  --a4: #6c3483; /* purple */
+  --a5: #d35400; /* orange */
+  --a6: #117a65; /* teal */
+  --highlight: #fef9c3;
+}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Lora', Georgia, serif;
-    line-height: 1.75;
-    font-size: 16px;
-  }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
 
-  /* ── HERO ── */
-  .hero {
-    background: linear-gradient(135deg, #0d0f14 0%, #111827 50%, #0d0f14 100%);
-    border-bottom: 1px solid var(--border);
-    padding: 60px 40px 50px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 70% 50%, rgba(126,232,162,0.07) 0%, transparent 60%),
-                radial-gradient(ellipse at 20% 80%, rgba(79,179,255,0.06) 0%, transparent 50%);
-  }
-  .hero-inner { max-width: 900px; margin: 0 auto; position: relative; }
-  .hero-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--accent1);
-    margin-bottom: 14px;
-    display: inline-block;
-    padding: 4px 10px;
-    border: 1px solid rgba(126,232,162,0.25);
-    border-radius: 3px;
-  }
-  .hero h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(36px, 6vw, 64px);
-    font-weight: 800;
-    color: var(--heading);
-    letter-spacing: -1.5px;
-    line-height: 1.05;
-    margin-bottom: 16px;
-  }
-  .hero h1 span { color: var(--accent1); }
-  .hero-sub {
-    font-size: 16px;
-    color: var(--muted);
-    max-width: 560px;
-    font-style: italic;
-  }
+/* ── HERO ── */
+.hero {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 56px 40px 48px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: 'PROCESSES';
+  position: absolute;
+  right: -20px; top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Clash Display', sans-serif;
+  font-size: 160px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.04);
+  white-space: nowrap;
+  letter-spacing: -4px;
+  pointer-events: none;
+}
+.hero-inner { max-width: 960px; margin: 0 auto; position: relative; }
+.hero-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--bg2);
+  border: 1px solid rgba(245,240,232,0.2);
+  padding: 4px 12px;
+  border-radius: 2px;
+  margin-bottom: 18px;
+}
+.hero h1 {
+  font-family: 'Clash Display', sans-serif;
+  font-size: clamp(40px, 7vw, 72px);
+  font-weight: 700;
+  letter-spacing: -2px;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+.hero h1 em { color: #e8c97e; font-style: normal; }
+.hero-sub { color: rgba(245,240,232,0.6); font-size: 15px; max-width: 500px; font-weight: 300; }
 
-  /* ── NAV TABS ── */
-  .tabs-wrap {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(13,15,20,0.95);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-  .tabs {
-    max-width: 900px; margin: 0 auto;
-    display: flex; gap: 0;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-  .tabs::-webkit-scrollbar { display: none; }
-  .tab-btn {
-    background: none; border: none; cursor: pointer;
-    padding: 16px 22px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 1px;
-    color: var(--muted);
-    border-bottom: 2px solid transparent;
-    transition: all 0.2s;
-    white-space: nowrap;
-    text-transform: uppercase;
-  }
-  .tab-btn:hover { color: var(--text); }
-  .tab-btn.active { color: var(--accent1); border-bottom-color: var(--accent1); }
+/* ── TABS ── */
+.tabs-wrap {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--ink);
+  border-bottom: 3px solid var(--a1);
+}
+.tabs { max-width: 960px; margin: 0 auto; display: flex; overflow-x: auto; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab-btn {
+  background: none; border: none; cursor: pointer;
+  padding: 15px 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px; letter-spacing: 1px; text-transform: uppercase;
+  color: rgba(245,240,232,0.45);
+  border-bottom: 3px solid transparent;
+  margin-bottom: -3px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.tab-btn:hover { color: rgba(245,240,232,0.8); }
+.tab-btn.active { color: #e8c97e; border-bottom-color: #e8c97e; }
 
-  /* ── CONTENT ── */
-  .content { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
-  .section { display: none; }
-  .section.active { display: block; }
+/* ── LAYOUT ── */
+.content { max-width: 960px; margin: 0 auto; padding: 44px 24px 80px; }
+.section { display: none; }
+.section.active { display: block; }
 
-  /* ── SECTION HEADINGS ── */
-  .section-header {
-    display: flex; align-items: center; gap: 14px;
-    margin-bottom: 36px; padding-bottom: 16px;
-    border-bottom: 1px solid var(--border);
-  }
-  .section-icon {
-    width: 40px; height: 40px;
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px; flex-shrink: 0;
-  }
-  .section-header h2 {
-    font-family: 'Syne', sans-serif;
-    font-size: 26px; font-weight: 700;
-    color: var(--heading);
-  }
-  .section-header p { color: var(--muted); font-size: 14px; font-style: italic; }
+/* ── SECTION HEADER ── */
+.sec-head {
+  border-left: 5px solid var(--a1);
+  padding-left: 18px;
+  margin-bottom: 36px;
+}
+.sec-head h2 {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 28px; font-weight: 700;
+  color: var(--ink);
+}
+.sec-head p { color: var(--muted); font-size: 14px; margin-top: 3px; }
 
-  /* ── DEFINITION CARDS ── */
-  .def-grid { display: grid; gap: 16px; }
-  .def-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px 22px;
-    transition: border-color 0.2s;
-  }
-  .def-card:hover { border-color: var(--accent2); }
-  .def-term {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px; font-weight: 500;
-    color: var(--accent2);
-    margin-bottom: 6px;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .def-term .badge {
-    font-size: 10px; padding: 2px 7px;
-    border-radius: 20px; font-weight: 400;
-    background: rgba(79,179,255,0.12);
-    border: 1px solid rgba(79,179,255,0.25);
-  }
-  .def-body { font-size: 15px; color: var(--text); }
-  .def-example {
-    margin-top: 10px; padding: 10px 14px;
-    background: var(--surface2); border-radius: 7px;
-    font-size: 13.5px; color: var(--muted);
-    border-left: 3px solid var(--accent5);
-    font-style: italic;
-  }
+/* ── CHAPTER BLOCK ── */
+.chapter {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 28px;
+  overflow: hidden;
+}
+.chapter-header {
+  display: flex; align-items: center; gap: 14px;
+  padding: 18px 22px;
+  background: var(--bg2);
+  border-bottom: 1.5px solid var(--border);
+  cursor: pointer;
+  user-select: none;
+}
+.chapter-header:hover { background: var(--border); }
+.ch-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; font-weight: 500;
+  color: var(--muted); letter-spacing: 1px;
+  min-width: 32px;
+}
+.ch-title {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 17px; font-weight: 600;
+  color: var(--ink); flex: 1;
+}
+.ch-arrow {
+  color: var(--muted); font-size: 14px;
+  transition: transform 0.25s;
+}
+.chapter-header.open .ch-arrow { transform: rotate(180deg); }
+.chapter-body { padding: 26px; display: none; }
+.chapter-body.open { display: block; }
 
-  /* ── CONCEPT BLOCKS ── */
-  .concept-block {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    margin-bottom: 24px;
-    overflow: hidden;
-  }
-  .concept-header {
-    padding: 18px 22px;
-    display: flex; align-items: center; gap: 12px;
-    border-bottom: 1px solid var(--border);
-    cursor: pointer;
-  }
-  .concept-num {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px; color: var(--accent4);
-    background: rgba(192,132,252,0.1);
-    border: 1px solid rgba(192,132,252,0.2);
-    border-radius: 5px;
-    padding: 3px 8px;
-    flex-shrink: 0;
-  }
-  .concept-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 17px; font-weight: 700;
-    color: var(--heading); flex: 1;
-  }
-  .concept-body { padding: 22px; }
-  .concept-body p { margin-bottom: 12px; color: var(--text); }
-  .concept-body p:last-child { margin-bottom: 0; }
+p.body { margin-bottom: 13px; color: var(--ink2); font-size: 15px; }
+p.body:last-child { margin-bottom: 0; }
+strong { color: var(--ink); }
 
-  /* ── STEP LIST ── */
-  .step-list { list-style: none; margin: 14px 0; }
-  .step-list li {
-    display: flex; gap: 14px; align-items: flex-start;
-    margin-bottom: 10px;
-  }
-  .step-num {
-    min-width: 26px; height: 26px;
-    background: var(--accent1); color: #0d0f14;
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px; font-weight: 500; flex-shrink: 0;
-    margin-top: 2px;
-  }
+/* ── BULLET LIST ── */
+.blist { list-style: none; margin: 10px 0 14px; }
+.blist li { padding-left: 22px; position: relative; margin-bottom: 7px; color: var(--ink2); font-size: 15px; }
+.blist li::before { content: '→'; position: absolute; left: 0; color: var(--a1); font-size: 12px; top: 3px; }
 
-  /* ── BULLET LIST ── */
-  .bullet-list { list-style: none; margin: 10px 0; }
-  .bullet-list li {
-    padding-left: 20px; position: relative; margin-bottom: 7px;
-    color: var(--text);
-  }
-  .bullet-list li::before {
-    content: '▸';
-    position: absolute; left: 0;
-    color: var(--accent3); font-size: 11px; top: 3px;
-  }
+/* ── CALLOUT ── */
+.callout {
+  border-radius: 8px; padding: 14px 18px; margin: 16px 0;
+  display: flex; gap: 12px; align-items: flex-start;
+  font-size: 14.5px;
+}
+.callout.red    { background: #fdf2f0; border: 1.5px solid #f5b7b1; color: #922b21; }
+.callout.blue   { background: #eaf0f8; border: 1.5px solid #aed6f1; color: #1a5276; }
+.callout.green  { background: #eafaf1; border: 1.5px solid #a9dfbf; color: #1e8449; }
+.callout.yellow { background: #fefce8; border: 1.5px solid #f9e79f; color: #7d6608; }
+.callout.purple { background: #f5eef8; border: 1.5px solid #d2b4de; color: #6c3483; }
+.callout-icon { font-size: 16px; flex-shrink: 0; }
 
-  /* ── CALLOUT / NOTE ── */
-  .callout {
-    border-radius: 9px; padding: 14px 18px;
-    margin: 14px 0; display: flex; gap: 12px; align-items: flex-start;
-  }
-  .callout.green { background: rgba(126,232,162,0.07); border: 1px solid rgba(126,232,162,0.2); }
-  .callout.blue  { background: rgba(79,179,255,0.07);  border: 1px solid rgba(79,179,255,0.2); }
-  .callout.red   { background: rgba(255,140,107,0.07); border: 1px solid rgba(255,140,107,0.2); }
-  .callout.yellow{ background: rgba(251,191,36,0.07);  border: 1px solid rgba(251,191,36,0.2); }
-  .callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-  .callout-text { font-size: 14.5px; }
-  .callout.green .callout-text { color: #a7f3c0; }
-  .callout.blue  .callout-text { color: #93d5ff; }
-  .callout.red   .callout-text { color: #ffb59e; }
-  .callout.yellow .callout-text { color: #fde68a; }
+/* ── FORMULA ── */
+.formula {
+  background: var(--ink);
+  color: #e8c97e;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 14px 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.formula .flabel { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; display: block; }
 
-  /* ── TABLE ── */
-  .table-wrap { overflow-x: auto; margin: 14px 0; border-radius: 10px; border: 1px solid var(--border); }
-  table { width: 100%; border-collapse: collapse; }
-  th {
-    background: var(--surface2);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11.5px; letter-spacing: 1px; text-transform: uppercase;
-    color: var(--accent2); padding: 12px 16px; text-align: left;
-    border-bottom: 1px solid var(--border);
-  }
-  td { padding: 11px 16px; border-bottom: 1px solid rgba(37,42,56,0.6); font-size: 14.5px; vertical-align: top; }
-  tr:last-child td { border-bottom: none; }
-  tr:hover td { background: rgba(255,255,255,0.02); }
-  td:first-child { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--accent4); }
+/* ── TABLE ── */
+.tbl-wrap { overflow-x: auto; margin: 14px 0; border-radius: 8px; border: 1.5px solid var(--border); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+thead th {
+  background: var(--bg2); padding: 11px 14px; text-align: left;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  letter-spacing: 1px; text-transform: uppercase; color: var(--ink2);
+  border-bottom: 1.5px solid var(--border);
+}
+tbody td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--ink2); vertical-align: top; }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover td { background: var(--bg2); }
+td.mono { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--a2); }
 
-  /* ── CODE INLINE ── */
-  code {
-    font-family: 'IBM Plex Mono', monospace;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    padding: 2px 7px; border-radius: 4px;
-    font-size: 13px; color: var(--accent5);
-  }
+/* ── GANTT CHART ── */
+.gantt-section { margin: 18px 0; }
+.gantt-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 8px; }
+.gantt-wrap { overflow-x: auto; }
+.gantt {
+  display: flex; height: 42px;
+  border: 1.5px solid var(--border);
+  border-radius: 6px; overflow: hidden;
+  min-width: max-content;
+}
+.gantt-block {
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; font-weight: 500;
+  border-right: 1.5px solid rgba(255,255,255,0.3);
+  min-width: 36px; flex-shrink: 0;
+  color: white;
+  position: relative;
+}
+.gantt-block:last-child { border-right: none; }
+.gantt-block.p1 { background: #c0392b; }
+.gantt-block.p2 { background: #1a5276; }
+.gantt-block.p3 { background: #1e8449; }
+.gantt-block.p4 { background: #6c3483; }
+.gantt-block.p5 { background: #d35400; }
+.gantt-block.idle { background: #b0a898; }
+.gantt-times {
+  display: flex; min-width: max-content;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; color: var(--muted);
+  margin-top: 5px;
+  position: relative;
+}
+.gantt-tick { position: absolute; transform: translateX(-50%); }
 
-  /* ── FORMULA BOX ── */
-  .formula {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-left: 4px solid var(--accent1);
-    border-radius: 8px;
-    padding: 14px 18px; margin: 14px 0;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 14px; color: var(--accent1);
-  }
-  .formula .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+/* ── STEP-BY-STEP SOLVE ── */
+.solve-box {
+  background: var(--bg2);
+  border: 1.5px solid var(--border2);
+  border-radius: 10px;
+  margin: 18px 0;
+  overflow: hidden;
+}
+.solve-title {
+  background: var(--ink); color: #e8c97e;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  padding: 10px 18px;
+}
+.solve-steps { padding: 18px; }
+.solve-step {
+  display: flex; gap: 14px; margin-bottom: 16px; align-items: flex-start;
+}
+.solve-step:last-child { margin-bottom: 0; }
+.step-circle {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--a1); color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500;
+  flex-shrink: 0; margin-top: 1px;
+}
+.step-circle.blue  { background: var(--a2); }
+.step-circle.green { background: var(--a3); }
+.step-circle.purp  { background: var(--a4); }
+.step-circle.ora   { background: var(--a5); }
+.step-content { font-size: 14.5px; color: var(--ink2); }
+.step-content strong { color: var(--ink); }
 
-  /* ── EXAM TIPS ── */
-  .exam-section { margin-bottom: 36px; }
-  .exam-section-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 14px; font-weight: 700;
-    color: var(--accent3); text-transform: uppercase; letter-spacing: 2px;
-    margin-bottom: 14px;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .exam-section-title::after {
-    content: ''; flex: 1; height: 1px; background: var(--border);
-  }
-  .tip-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px 20px;
-    margin-bottom: 12px;
-    display: flex; gap: 14px; align-items: flex-start;
-  }
-  .tip-card:hover { border-color: rgba(255,140,107,0.4); }
-  .tip-badge {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px; padding: 3px 9px; border-radius: 20px;
-    flex-shrink: 0; margin-top: 2px;
-    white-space: nowrap;
-  }
-  .tip-badge.high { background: rgba(255,140,107,0.15); color: var(--accent3); border: 1px solid rgba(255,140,107,0.3); }
-  .tip-badge.med  { background: rgba(251,191,36,0.12);  color: var(--accent5); border: 1px solid rgba(251,191,36,0.25); }
-  .tip-badge.def  { background: rgba(192,132,252,0.12); color: var(--accent4); border: 1px solid rgba(192,132,252,0.25); }
-  .tip-text { font-size: 14.5px; color: var(--text); }
-  .tip-text strong { color: var(--heading); }
+/* ── HIGHLIGHT ── */
+.hl { background: var(--highlight); padding: 2px 5px; border-radius: 3px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--ink); }
+code { font-family: 'JetBrains Mono', monospace; background: var(--bg2); border: 1px solid var(--border); padding: 2px 6px; border-radius: 4px; font-size: 13px; color: var(--a2); }
 
-  /* ── DIVIDER ── */
-  .divider { height: 1px; background: var(--border); margin: 28px 0; }
+/* ── DIVIDER ── */
+.divider { height: 1.5px; background: var(--border); margin: 24px 0; }
 
-  /* ── PROCESS STATE DIAGRAM ── */
-  .state-diagram {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px; margin: 14px 0;
-    display: flex; align-items: center; justify-content: center;
-    gap: 0; flex-wrap: wrap;
-  }
-  .state-node {
-    background: var(--surface);
-    border: 2px solid var(--border);
-    border-radius: 50%;
-    width: 80px; height: 80px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Syne', sans-serif;
-    font-size: 13px; font-weight: 700;
-    color: var(--heading); text-align: center; line-height: 1.2;
-    flex-shrink: 0;
-  }
-  .state-node.new    { border-color: var(--accent1); color: var(--accent1); }
-  .state-node.ready  { border-color: var(--accent2); color: var(--accent2); }
-  .state-node.run    { border-color: var(--accent4); color: var(--accent4); }
-  .state-node.wait   { border-color: var(--accent5); color: var(--accent5); }
-  .state-node.exit   { border-color: var(--accent3); color: var(--accent3); }
-  .state-arrow { padding: 0 8px; color: var(--muted); font-size: 20px; }
+/* ── DEFINITION CARDS ── */
+.def-grid { display: grid; gap: 14px; }
+.def-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-left: 5px solid var(--a2);
+  border-radius: 8px;
+  padding: 18px 20px;
+  transition: border-left-color 0.2s;
+}
+.def-card:hover { border-left-color: var(--a1); }
+.def-term { font-family: 'Clash Display', sans-serif; font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 5px; }
+.def-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 7px; }
+.def-body { font-size: 14.5px; color: var(--ink2); }
+.def-example { margin-top: 9px; padding: 9px 13px; background: var(--bg2); border-radius: 5px; font-size: 13.5px; color: var(--muted); border-left: 3px solid var(--a5); font-style: italic; }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 600px) {
-    .hero { padding: 40px 20px 36px; }
-    .content { padding: 24px 16px 60px; }
-    .tab-btn { padding: 14px 14px; font-size: 11px; }
-  }
+/* ── EXAM TIPS ── */
+.tip-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 9px; padding: 16px 20px; margin-bottom: 12px;
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.tip-badge {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  padding: 3px 9px; border-radius: 20px; flex-shrink: 0; margin-top: 2px; white-space: nowrap;
+}
+.tip-badge.h { background: #fdf2f0; color: var(--a1); border: 1px solid #f5b7b1; }
+.tip-badge.m { background: #fefce8; color: #7d6608; border: 1px solid #f9e79f; }
+.tip-badge.d { background: #eaf0f8; color: var(--a2); border: 1px solid #aed6f1; }
+.tip-text { font-size: 14.5px; color: var(--ink2); }
+.exam-group { margin-bottom: 32px; }
+.exam-group-title {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--a1); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 10px;
+}
+.exam-group-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* ── PROCESS STATES VISUAL ── */
+.state-flow {
+  display: flex; align-items: center; flex-wrap: wrap;
+  gap: 6px; margin: 16px 0; padding: 20px;
+  background: var(--bg2); border-radius: 10px; border: 1.5px solid var(--border);
+}
+.state-node {
+  width: 78px; height: 78px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Clash Display', sans-serif; font-size: 12px; font-weight: 600;
+  text-align: center; line-height: 1.2; flex-shrink: 0; border: 2.5px solid;
+}
+.sn-new  { background: #eafaf1; border-color: var(--a3); color: var(--a3); }
+.sn-ready{ background: #eaf0f8; border-color: var(--a2); color: var(--a2); }
+.sn-run  { background: #fdf2f0; border-color: var(--a1); color: var(--a1); }
+.sn-wait { background: #fefce8; border-color: var(--a5); color: var(--a5); }
+.sn-exit { background: #f5eef8; border-color: var(--a4); color: var(--a4); }
+.state-arr { color: var(--muted); font-size: 18px; }
+
+/* ── PRIORITY TIMELINE ── */
+.timeline { margin: 16px 0; }
+.tl-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 13.5px; }
+.tl-pid { font-family: 'JetBrains Mono', monospace; font-size: 11px; min-width: 28px; color: var(--muted); }
+.tl-bar { height: 26px; border-radius: 4px; display: flex; align-items: center; padding: 0 8px; color: white; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500; flex-shrink: 0; white-space: nowrap; }
+
+@media (max-width: 600px) {
+  .hero { padding: 40px 18px 36px; }
+  .content { padding: 26px 16px 60px; }
+  .tab-btn { padding: 13px 13px; font-size: 10.5px; }
+  .chapter-body { padding: 18px; }
+}
 </style>
 </head>
 <body>
 
 <div class="hero">
   <div class="hero-inner">
-    <span class="hero-label">Operating Systems · CSE@UTA</span>
-    <h1>Processes<span>.</span></h1>
-    <p class="hero-sub">Your complete exam-ready study guide — definitions, concepts explained simply, and what to expect on the test.</p>
+    <span class="hero-tag">OS · CSE@UTA · Study Guide v2</span>
+    <h1>Processes<em>.</em><br>Study Guide</h1>
+    <p class="hero-sub">Definitions, full step-by-step algorithm walkthroughs, Gantt charts explained, and what to expect on the exam.</p>
   </div>
 </div>
 
@@ -356,639 +365,988 @@
   <div class="tabs">
     <button class="tab-btn active" onclick="showTab('defs',this)">📖 Definitions</button>
     <button class="tab-btn" onclick="showTab('concepts',this)">🧠 Concepts</button>
+    <button class="tab-btn" onclick="showTab('scheduling',this)">📊 Scheduling (How to Solve)</button>
+    <button class="tab-btn" onclick="showTab('sync',this)">🔒 Sync &amp; Deadlock</button>
     <button class="tab-btn" onclick="showTab('exam',this)">🎯 Exam Tips</button>
   </div>
 </div>
 
 <div class="content">
 
-  <!-- ══════════════════════════════════════════ -->
-  <!--  SECTION 1: DEFINITIONS                   -->
-  <!-- ══════════════════════════════════════════ -->
-  <div id="defs" class="section active">
-    <div class="section-header">
-      <div class="section-icon" style="background:rgba(79,179,255,0.1);border:1px solid rgba(79,179,255,0.25);">📖</div>
-      <div>
-        <h2>Must-Know Definitions</h2>
-        <p>Memorize these terms — they are the vocabulary of the entire topic.</p>
-      </div>
-    </div>
-
-    <div class="def-grid">
-
-      <div class="def-card">
-        <div class="def-term">Process <span class="badge">core</span></div>
-        <div class="def-body">A <strong>program in execution</strong>. When you run a program (e.g., click an app), the OS loads it into memory and starts it — that running instance is a process. Processes are the basic unit of work managed by the OS.</div>
-        <div class="def-example">Example: Opening Chrome creates a process. Opening it again creates another separate process.</div>
-      </div>
-
-      <div class="def-card">
-        <div class="def-term">PID – Process ID <span class="badge">identifier</span></div>
-        <div class="def-body">A unique number assigned by the OS to every process. It's how the OS tracks and refers to each process. Think of it like a student ID number.</div>
-        <div class="def-example">Example: In Linux, run <code>ps -ax</code> to see the PID of every running process.</div>
-      </div>
-
-      <div class="def-card">
-        <div class="def-term">PCB – Process Control Block <span class="badge">data structure</span></div>
-        <div class="def-body">A data structure the OS maintains for every process. It stores everything the OS needs to know about a process: its PID, name, state, list of child processes, open files, CPU registers, instruction pointer, memory pointers, and accounting info (how long it has run).</div>
-        <div class="def-example">Think of the PCB like a student's folder at a school office — it has all the info needed to manage them.</div>
-      </div>
-
-      <div class="def-card">
-        <div class="def-term">Process States <span class="badge">lifecycle</span></div>
-        <div class="def-body">The stages a process moves through during its lifetime:
-          <ul class="bullet-list" style="margin-top:8px;">
-            <li><strong>New</strong> – just created, being loaded into memory.</li>
-            <li><strong>Ready</strong> – loaded and waiting for CPU time.</li>
-            <li><strong>Running</strong> – currently executing on the CPU.</li>
-            <li><strong>Waiting/Blocked</strong> – paused, waiting for something (I/O, timer, event).</li>
-            <li><strong>Exit</strong> – finished and being cleaned up.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="def-card">
-        <div class="def-term">Scheduler / Process Scheduler <span class="badge">OS component</span></div>
-        <div class="def-body">The part of the OS that decides <em>which</em> process runs, <em>when</em> it runs, and <em>for how long</em>. It uses scheduling algorithms (policies) to make these decisions.</div>
-      </div>
-
-      <div class="def-card">
-        <div class="def-term">Scheduling Metrics <span class="badge">measurement</span></div>
-        <div class="def-body">How we measure how well a scheduler is doing:
-          <ul class="bullet-list" style="margin-top:8px;">
-            <li><strong>Wait Time</strong> – how long a job sat idle waiting to be scheduled.</li>
-            <li><strong>Turnaround Time</strong> – total time from when a job <em>arrived</em> until it <em>completed</em> (includes waiting + running).</li>
-            <li><strong>Throughput</strong> – how many jobs complete per unit of time (e.g., jobs/hour).</li>
-          </ul>
-        </div>
-        <div class="def-example">Turnaround = Wait Time + Run Time</div>
-      </div>
-
-      <div class="def-card">
-        <div class="def-term">Non-Preemptive Scheduling <span class="badge">scheduling type</span></div>
-        <div class="def-body">Once a process is given the CPU, it keeps running until it <strong>finishes on its own</strong>. The scheduler cannot interrupt it mid-run. Used by FCFS and non-preemptive SJN/Priority.</div>
-      </div>
-
-      <div class="def-card">
-        <div class="def-term">Preemptive Scheduling <span class="badge">scheduling type</span></div>
-        <div class="def-body">The scheduler <strong>can interrupt</strong> a running process and switch to another one (e.g., when a higher-priority or shorter job arrives, or a timer expires). Used by Round Robin, preemptive Priority, and preemptive SJN.</div>
-      </div>
-
-      <div class="def-card">
-        <div class="def-term">Context Switch <span class="badge">operation</span></div>
-        <div class="def-body">The time and effort required to <strong>stop one process and start another</strong>. The OS saves the current process's state (registers, instruction pointer) to its PCB, then loads the next process's saved state. This switching has a cost in time.</div>
-      </div>
-
-      <div class="def-card">
-        <div class="def-term">FCFS – First Come, First Served <span class="badge">algorithm</span></div>
-        <div class="def-body">The simplest scheduling policy: processes are run in the order they <strong>arrive</strong>. Like a queue at a coffee shop — whoever got there first gets served first. Non-preemptive.</div>
-      </div>
-
-      <div class="def-card">
-        <div class="def-term">SJN / SRTF – Shortest Job Next <span class="badge">algorithm</span></div>
-        <div class="def-body">Schedule the process with the <strong>shortest run time</strong> first. Minimizes average wait time. Can be non-preemptive (pick shortest at start) or preemptive — in which case it's called <strong>SRTF (Shortest Remaining Time First)</strong>: if a new process arrives with a shorter remaining time, it preempts the current one.</div>
-      </div>
-
-      <div class="def-card">
-        <div class="def-term">Priority Scheduling <span class="badge">algorithm</span></div>
-        <div class="def-body">Each process is assigned a <strong>priority number</strong> (in this class, bigger = higher priority). The scheduler always runs the highest-priority ready process. Can be preemptive or non-preemptive.</div>
-      </div>
-
-      <div class="def-card">
-        <div class="def-term">Round Robin (RR) <span class="badge">algorithm</span></div>
-        <div class="def-body">Each process gets a <strong>time slice</strong> (quantum) on the CPU, then the next process gets its turn. Always preemptive. Fair — every process gets regular CPU time. Good for interactive systems.</div>
-        <div class="def-example">Example: P5 runs for 1 unit → P6 runs 1 unit → P5 runs 1 unit → P7 runs 1 unit → cycling through all ready processes.</div>
-      </div>
-
-      <div class="def-card">
-        <div class="def-term">Gantt Chart <span class="badge">visualization</span></div>
-        <div class="def-body">A timeline diagram used to visualize scheduling. Shows which process runs during which time intervals. The horizontal axis is time; each segment shows which process occupied the CPU.</div>
-      </div>
-
-      <div class="def-card">
-        <div class="def-term">Fork() <span class="badge">system call</span></div>
-        <div class="def-body">An OS system call that <strong>creates a copy (clone) of the current process</strong>. Takes no parameters. Returns 0 to the child process and the child's PID to the parent. Both processes continue from the same point after the fork.</div>
-      </div>
-
-      <div class="def-card">
-        <div class="def-term">Exec() <span class="badge">system call</span></div>
-        <div class="def-body">An OS system call that <strong>replaces the current process</strong> with a new program. Has many variations: <code>execv</code>, <code>execve</code>, <code>execl</code>, etc. If successful, it never returns — the process becomes something else.</div>
-      </div>
-
-      <div class="def-card">
-        <div class="def-term">Thread <span class="badge">concurrency</span></div>
-        <div class="def-body">A lightweight unit of execution <em>within</em> a process. Multiple threads share the same process memory and resources but run independently. Three types: <strong>User-Level</strong> (managed by language runtime, e.g. C library), <strong>Kernel-Level</strong> (managed by the OS directly), and <strong>Hybrid</strong> (combination of both).</div>
-      </div>
-
-      <div class="def-card">
-        <div class="def-term">IPC – Inter-Process Communication <span class="badge">coordination</span></div>
-        <div class="def-body">Methods that allow separate processes to <strong>exchange data</strong>. Common IPC methods: shared files, shared memory, pipes, and message queues.</div>
-      </div>
-
-      <div class="def-card">
-        <div class="def-term">Race Condition <span class="badge">concurrency bug</span></div>
-        <div class="def-body">An <strong>unpredictable, timing-dependent bug</strong> that occurs when two or more processes access and modify a shared resource at the same time, with the outcome depending on who gets there first ("wins the race"). Results in incorrect, inconsistent behavior.</div>
-        <div class="def-example">Example: Two processes both try to update a shared counter at the same time — the final value may be wrong because one overwrote the other's update.</div>
-      </div>
-
-      <div class="def-card">
-        <div class="def-term">Critical Region (Critical Section) <span class="badge">synchronization</span></div>
-        <div class="def-body">A section of code that <strong>accesses a shared resource</strong> and must not be executed by more than one process at a time. Proper synchronization ensures only one process is in the critical region at any moment.</div>
-      </div>
-
-      <div class="def-card">
-        <div class="def-term">Semaphore <span class="badge">synchronization tool</span></div>
-        <div class="def-body">A synchronization primitive (tool) used to prevent race conditions. Acts as a counter-based lock:
-          <ul class="bullet-list" style="margin-top:8px;">
-            <li><strong>Binary semaphore</strong> – only 0 or 1 (locked / unlocked). Also called a mutex.</li>
-            <li><strong>Counting semaphore</strong> – can hold any non-negative integer, controlling access for multiple slots of a resource.</li>
-          </ul>
-          Critically, semaphore operations must be <strong>atomic</strong> (single, uninterruptible operation) — otherwise they could themselves suffer a race condition.
-        </div>
-      </div>
-
-      <div class="def-card">
-        <div class="def-term">Mutex – Mutual Exclusion <span class="badge">synchronization</span></div>
-        <div class="def-body">A lock that ensures <strong>only one process can use a shared resource at a time</strong>. When a process holds the mutex, all others must wait. Implemented via binary semaphore.</div>
-      </div>
-
-      <div class="def-card">
-        <div class="def-term">Deadlock <span class="badge">concurrency problem</span></div>
-        <div class="def-body">A situation where <strong>two or more processes are each waiting for the other to release a resource</strong>, so none of them can ever proceed. Like two cars blocking a one-lane bridge from each side — neither can move forward or back.</div>
-        <div class="def-example">Process A holds Resource 1, needs Resource 2. Process B holds Resource 2, needs Resource 1. Both wait forever.</div>
-      </div>
-
-      <div class="def-card">
-        <div class="def-term">Deadlock Conditions <span class="badge">theory</span></div>
-        <div class="def-body">Three conditions that together can cause a deadlock:
-          <ul class="bullet-list" style="margin-top:8px;">
-            <li><strong>Mutual Exclusion</strong> – only one process can hold a resource at a time.</li>
-            <li><strong>Hold-and-Wait</strong> – a process holding one resource waits for another without releasing the first.</li>
-            <li><strong>Circular Wait</strong> – a cycle of processes, each waiting for a resource held by the next.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="def-card">
-        <div class="def-term">Circular Buffer <span class="badge">data structure</span></div>
-        <div class="def-body">A fixed-size ring-shaped buffer (in memory) used to pass data between processes. Has an <strong>IN pointer</strong> (where data is written) and an <strong>OUT pointer</strong> (where data is read). Requires coordination to prevent reading unwritten data or overwriting unread data.</div>
-      </div>
-
-    </div>
+<!-- ════════════════════════════════════════════ -->
+<!-- DEFINITIONS                                  -->
+<!-- ════════════════════════════════════════════ -->
+<div id="defs" class="section active">
+  <div class="sec-head">
+    <h2>Must-Know Definitions</h2>
+    <p>Every key term — clear, short, memorizable.</p>
   </div>
+  <div class="def-grid">
 
-  <!-- ══════════════════════════════════════════ -->
-  <!--  SECTION 2: CONCEPTS                      -->
-  <!-- ══════════════════════════════════════════ -->
-  <div id="concepts" class="section">
-    <div class="section-header">
-      <div class="section-icon" style="background:rgba(192,132,252,0.1);border:1px solid rgba(192,132,252,0.25);">🧠</div>
-      <div>
-        <h2>Concept Explanations</h2>
-        <p>Simple explanations of every major idea — built for first-time learners.</p>
+    <div class="def-card">
+      <div class="def-tag">core concept</div>
+      <div class="def-term">Process</div>
+      <div class="def-body">A <strong>program that is currently running</strong> in memory. A program is a file on disk; a process is what it becomes when it starts executing. Multiple processes can exist from the same program.</div>
+      <div class="def-example">Opening Chrome twice = two separate processes, both from the same Chrome program.</div>
+    </div>
+
+    <div class="def-card">
+      <div class="def-tag">identifier</div>
+      <div class="def-term">PID — Process ID</div>
+      <div class="def-body">A <strong>unique number</strong> the OS assigns to every process so it can track and manage it. Like a student ID number.</div>
+      <div class="def-example">Linux command <code>ps -ax</code> lists every process with its PID.</div>
+    </div>
+
+    <div class="def-card">
+      <div class="def-tag">data structure</div>
+      <div class="def-term">PCB — Process Control Block</div>
+      <div class="def-body">A <strong>data record the OS keeps for every process</strong> containing everything needed to manage it: PID, name, child process list, accounting info (run time, cost), open file list, CPU registers, instruction pointer, memory pointers, message queues.</div>
+      <div class="def-example">Think of it as the process's "folder" at the OS office — everything about it in one place.</div>
+    </div>
+
+    <div class="def-card">
+      <div class="def-tag">lifecycle</div>
+      <div class="def-term">Process States</div>
+      <div class="def-body">The five stages a process moves through: <strong>New</strong> (being loaded), <strong>Ready</strong> (waiting for CPU), <strong>Running</strong> (on the CPU now), <strong>Waiting/Blocked</strong> (waiting for I/O or event), <strong>Exit</strong> (finished, being cleaned up).</div>
+    </div>
+
+    <div class="def-card">
+      <div class="def-tag">OS component</div>
+      <div class="def-term">Scheduler (Process Scheduler)</div>
+      <div class="def-body">The part of the OS that <strong>decides which process runs, when, and for how long</strong>. It uses a scheduling algorithm (policy) to make these decisions.</div>
+    </div>
+
+    <div class="def-card">
+      <div class="def-tag">metrics</div>
+      <div class="def-term">Wait Time, Turnaround Time, Throughput</div>
+      <div class="def-body">
+        <strong>Wait Time</strong> — How long a process spent waiting (not running) from arrival to completion.<br>
+        <strong>Turnaround Time</strong> — Total time from <em>arrival</em> to <em>completion</em> (wait + run).<br>
+        <strong>Throughput</strong> — How many processes complete per unit of time.
+      </div>
+      <div class="def-example">Formulas: Turnaround = Completion − Arrival &nbsp;|&nbsp; Wait = Turnaround − Run Time</div>
+    </div>
+
+    <div class="def-card">
+      <div class="def-tag">scheduling type</div>
+      <div class="def-term">Non-Preemptive vs. Preemptive</div>
+      <div class="def-body">
+        <strong>Non-Preemptive</strong> — Once a process starts on the CPU, it <em>runs until it finishes</em>. Nothing can interrupt it.<br>
+        <strong>Preemptive</strong> — The OS <em>can stop a running process mid-run</em> and switch to another (e.g., a higher-priority process arrives, or a timer fires).
       </div>
     </div>
 
-    <!-- CONCEPT 1 -->
-    <div class="concept-block">
-      <div class="concept-header">
-        <span class="concept-num">01</span>
-        <span class="concept-title">What is an Operating System's Job?</span>
-      </div>
-      <div class="concept-body">
-        <p>An OS has three main duties: <strong>managing processes</strong>, managing memory, and managing files. Processes are the foundation — everything else (memory, files) only matters once a process is loaded and running.</p>
-        <p>Even a simple single-core device (like a $5 Raspberry Pi Zero) typically has dozens of processes in some state at any moment. Only one actually runs on the CPU at a time — the rest are either ready to run or waiting for something to happen (like a network message or a timer).</p>
-        <div class="callout green">
-          <span class="callout-icon">💡</span>
-          <span class="callout-text">On Linux/Unix: use <code>ps -ax</code> to see all processes, or <code>top</code> for a live view. The <code>kill -9 PID</code> command forcibly terminates a process.</span>
-        </div>
-      </div>
+    <div class="def-card">
+      <div class="def-tag">operation</div>
+      <div class="def-term">Context Switch</div>
+      <div class="def-body">The work of <strong>pausing one process and resuming another</strong>. The OS saves the current process's CPU state (registers, instruction pointer) to its PCB, then loads the next process's saved state. Has a time cost.</div>
     </div>
 
-    <!-- CONCEPT 2 -->
-    <div class="concept-block">
-      <div class="concept-header">
-        <span class="concept-num">02</span>
-        <span class="concept-title">Process Lifecycle: States a Process Goes Through</span>
-      </div>
-      <div class="concept-body">
-        <p>A process doesn't just jump straight from "created" to "running" — it moves through several states:</p>
-        <div class="state-diagram">
-          <div class="state-node new">NEW</div>
-          <div class="state-arrow">→</div>
-          <div class="state-node ready">READY</div>
-          <div class="state-arrow">→</div>
-          <div class="state-node run">RUNNING</div>
-          <div class="state-arrow">→</div>
-          <div class="state-node wait">WAITING</div>
-          <div class="state-arrow" style="opacity:.3">↩</div>
-        </div>
-        <ul class="step-list" style="margin-top:16px;">
-          <li><div class="step-num">1</div><div><strong>New</strong> – OS creates the process, loads it from disk into memory.</div></li>
-          <li><div class="step-num">2</div><div><strong>Ready</strong> – Process is in memory and ready to run, but the CPU is busy with something else. It waits in a queue.</div></li>
-          <li><div class="step-num">3</div><div><strong>Running</strong> – The scheduler picked this process; it is actively executing on the CPU right now.</div></li>
-          <li><div class="step-num">4</div><div><strong>Waiting/Blocked</strong> – Process needs something external (e.g., data from disk, a network packet, a timer to fire). It steps off the CPU and waits. When the event occurs, it goes back to Ready.</div></li>
-          <li><div class="step-num">5</div><div><strong>Exit</strong> – Process finished. OS cleans up its memory and PCB.</div></li>
-        </ul>
-        <div class="callout blue">
-          <span class="callout-icon">📝</span>
-          <span class="callout-text">The PCB (Process Control Block) stores the process's complete state — registers, instruction pointer, open files — so it can be paused and resumed correctly.</span>
-        </div>
-      </div>
+    <div class="def-card">
+      <div class="def-tag">visualization</div>
+      <div class="def-term">Gantt Chart</div>
+      <div class="def-body">A <strong>horizontal bar timeline</strong> showing which process occupies the CPU at each moment in time. Time flows left to right on the X-axis. Each labeled segment shows one process running. The width of each segment = how long it ran.</div>
+      <div class="def-example">P1 runs 0→3, P2 runs 3→5, P3 runs 5→7 → three adjacent colored blocks on the timeline.</div>
     </div>
 
-    <!-- CONCEPT 3 -->
-    <div class="concept-block">
-      <div class="concept-header">
-        <span class="concept-num">03</span>
-        <span class="concept-title">Scheduling Algorithms — How the OS Picks Who Runs Next</span>
-      </div>
-      <div class="concept-body">
-        <p>The scheduler must decide which process gets the CPU next. Here are the main strategies:</p>
-        <div class="divider"></div>
-
-        <p><strong style="color:var(--accent2)">FCFS (First Come, First Served)</strong> — Non-preemptive</p>
-        <p>The simplest method: run processes in arrival order. Once a process starts, it runs to completion. Like a queue — no cutting allowed.</p>
-        <div class="callout yellow">
-          <span class="callout-icon">⚠️</span>
-          <span class="callout-text">Downside: a long process arriving first can make many short processes wait a very long time ("convoy effect").</span>
-        </div>
-
-        <div class="divider"></div>
-        <p><strong style="color:var(--accent2)">SJN (Shortest Job Next) / SRTF</strong> — Can be preemptive or not</p>
-        <p>Run the process with the shortest estimated run time first. This minimizes average wait time. When preemptive, it becomes SRTF — if a new, shorter process arrives while one is running, the running process is paused and the shorter one takes over.</p>
-
-        <div class="divider"></div>
-        <p><strong style="color:var(--accent2)">Priority Scheduling</strong> — Can be preemptive or not</p>
-        <p>Each process has a priority number. In this course: <strong>bigger number = higher priority</strong>. The highest-priority ready process runs. When preemptive, a newly arrived higher-priority process immediately bumps the current one.</p>
-
-        <div class="divider"></div>
-        <p><strong style="color:var(--accent2)">Round Robin (RR)</strong> — Always preemptive</p>
-        <p>Every process gets a fixed time slice (quantum) on the CPU, then the next process in line gets its slice. If a process doesn't finish in its slice, it goes back to the end of the ready queue. This repeats in a circle until all processes are done.</p>
-        <div class="callout green">
-          <span class="callout-icon">✓</span>
-          <span class="callout-text">Round Robin is fair — no process starves. It's commonly used in real operating systems for interactive workloads.</span>
-        </div>
-
-        <div class="divider"></div>
-        <p><strong style="color:var(--accent4)">Summary Table</strong></p>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Algorithm</th><th>Preemptive?</th><th>Key Idea</th><th>Best for</th></tr></thead>
-            <tbody>
-              <tr><td>FCFS</td><td>No</td><td>Order of arrival</td><td>Simple/batch systems</td></tr>
-              <tr><td>SJN</td><td>No</td><td>Shortest run time first</td><td>Minimizing avg wait</td></tr>
-              <tr><td>SRTF</td><td>Yes</td><td>Shortest remaining time</td><td>Optimal avg wait</td></tr>
-              <tr><td>Priority</td><td>Both</td><td>Higher priority wins</td><td>Mixed-importance tasks</td></tr>
-              <tr><td>Round Robin</td><td>Yes (always)</td><td>Time slices, rotate</td><td>Interactive/fair systems</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+    <div class="def-card">
+      <div class="def-tag">algorithm</div>
+      <div class="def-term">FCFS — First Come, First Served</div>
+      <div class="def-body">Processes run in the <strong>order they arrive</strong>. The first to arrive runs first to completion, then the next, etc. Non-preemptive and simple.</div>
     </div>
 
-    <!-- CONCEPT 4 -->
-    <div class="concept-block">
-      <div class="concept-header">
-        <span class="concept-num">04</span>
-        <span class="concept-title">How to Calculate Wait Time and Turnaround Time</span>
-      </div>
-      <div class="concept-body">
-        <p>These are the two most important scheduling metrics and very likely to appear as exam calculations.</p>
-
-        <div class="formula">
-          <div class="label">Turnaround Time</div>
-          Turnaround Time = Completion Time − Arrival Time
-        </div>
-        <div class="formula">
-          <div class="label">Wait Time</div>
-          Wait Time = Turnaround Time − Run Time
-          <br>
-          (or equivalently: Wait Time = Start Time − Arrival Time for non-preemptive)
-        </div>
-
-        <p><strong>Example (FCFS):</strong> Processes P5 (arrives=0, runs=2), P6 (arrives=0, runs=1), P7 (arrives=1, runs=2), P8 (arrives=2, runs=1). Schedule order: P5 → P6 → P7 → P8.</p>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>PID</th><th>Arrival</th><th>Run</th><th>Start</th><th>Finish</th><th>Turnaround</th><th>Wait</th></tr></thead>
-            <tbody>
-              <tr><td>P5</td><td>0</td><td>2</td><td>0</td><td>2</td><td>2</td><td>0</td></tr>
-              <tr><td>P6</td><td>0</td><td>1</td><td>2</td><td>3</td><td>3</td><td>2</td></tr>
-              <tr><td>P7</td><td>1</td><td>2</td><td>3</td><td>5</td><td>4</td><td>2</td></tr>
-              <tr><td>P8</td><td>2</td><td>1</td><td>5</td><td>6</td><td>4</td><td>3</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="callout red">
-          <span class="callout-icon">🎯</span>
-          <span class="callout-text">For preemptive scheduling, turnaround time is still: <strong>Completion − Arrival</strong>. But wait time needs to sum up all individual waiting intervals (total time not running, from arrival to completion).</span>
-        </div>
-      </div>
+    <div class="def-card">
+      <div class="def-tag">algorithm</div>
+      <div class="def-term">SJN / SRTF — Shortest Job Next</div>
+      <div class="def-body"><strong>SJN (non-preemptive)</strong>: at decision time, pick the process with the shortest run time. <strong>SRTF (preemptive)</strong>: if a new process arrives with a shorter remaining time than what's currently running, preempt and run the new one.</div>
     </div>
 
-    <!-- CONCEPT 5 -->
-    <div class="concept-block">
-      <div class="concept-header">
-        <span class="concept-num">05</span>
-        <span class="concept-title">Fork() and Exec() — Creating New Processes</span>
-      </div>
-      <div class="concept-body">
-        <p>In Unix/Linux, processes are created using two key system calls:</p>
-        <ul class="step-list">
-          <li><div class="step-num">1</div><div><strong>fork()</strong> — Creates an <em>exact clone</em> of the current process. The parent and child are nearly identical (same memory, same open files) but have different PIDs. <code>fork()</code> returns 0 to the child and the child's PID to the parent, so they can tell each other apart.</div></li>
-          <li><div class="step-num">2</div><div><strong>exec()</strong> — <em>Replaces</em> the current process image with a new program. After a successful exec, the old code is gone — the process now runs a completely different program. If you call exec after a fork, the child becomes a new program while the parent continues.</div></li>
-        </ul>
-        <div class="callout blue">
-          <span class="callout-icon">📝</span>
-          <span class="callout-text"><code>system("command")</code> in C is a convenience wrapper — it creates a shell and runs a string. Internally it uses fork + exec. It's powerful but less efficient and potentially unsafe if user input reaches it.</span>
-        </div>
-      </div>
+    <div class="def-card">
+      <div class="def-tag">algorithm</div>
+      <div class="def-term">Priority Scheduling</div>
+      <div class="def-body">Each process has a <strong>priority number</strong> — in this course, <em>bigger = higher priority</em>. The highest-priority ready process always runs. Can be preemptive or non-preemptive.</div>
     </div>
 
-    <!-- CONCEPT 6 -->
-    <div class="concept-block">
-      <div class="concept-header">
-        <span class="concept-num">06</span>
-        <span class="concept-title">Threads — Lighter-Weight Parallelism</span>
-      </div>
-      <div class="concept-body">
-        <p>Threads are like mini-processes that live <em>inside</em> a process and share its memory. Creating a thread is cheaper than creating a new process. Three models:</p>
-        <ul class="bullet-list">
-          <li><strong>User-Level threads</strong> – Managed by the programming language runtime (e.g., C's clib). OS doesn't know about them. Fast to create, but if one thread blocks, the whole process blocks.</li>
-          <li><strong>Kernel-Level threads</strong> – The OS kernel directly manages them. Can run truly in parallel on multi-core systems. More overhead but more power.</li>
-          <li><strong>Hybrid</strong> – OS manages kernel threads, each of which can run multiple user threads. Combines benefits of both.</li>
-        </ul>
-        <div class="callout green">
-          <span class="callout-icon">💡</span>
-          <span class="callout-text">Threads matter most on multi-core systems — kernel-level threads can run simultaneously on different cores, giving true parallelism.</span>
-        </div>
-      </div>
+    <div class="def-card">
+      <div class="def-tag">algorithm</div>
+      <div class="def-term">Round Robin (RR)</div>
+      <div class="def-body">Each process gets a <strong>fixed time slice (quantum)</strong> on the CPU. When its slice is up, it goes to the back of the ready queue and the next process gets its slice. <em>Always preemptive</em>. Repeats in a cycle until all finish.</div>
     </div>
 
-    <!-- CONCEPT 7 -->
-    <div class="concept-block">
-      <div class="concept-header">
-        <span class="concept-num">07</span>
-        <span class="concept-title">Inter-Process Communication (IPC)</span>
-      </div>
-      <div class="concept-body">
-        <p>When processes cooperate (e.g., a pipeline: A → B → C, where A produces data that B processes that C stores), they need to share data. This is IPC.</p>
-        <p><strong>IPC Methods:</strong></p>
-        <ul class="bullet-list">
-          <li><strong>Files</strong> – Process A writes to a file; process B reads from it. Simple but slow.</li>
-          <li><strong>Shared Memory</strong> – Two processes are given access to the same region of RAM. Very fast, but requires careful coordination.</li>
-          <li><strong>Pipes</strong> – A one-directional channel from one process to another (like a physical pipe for data).</li>
-          <li><strong>Message Queues</strong> – Processes send and receive discrete messages through a queue managed by the OS.</li>
-        </ul>
-        <div class="callout yellow">
-          <span class="callout-icon">⚠️</span>
-          <span class="callout-text">The key challenge with IPC is <strong>coordination</strong>: process B must not read data that process A hasn't finished writing yet. This is where race conditions and semaphores come in.</span>
-        </div>
-      </div>
+    <div class="def-card">
+      <div class="def-tag">system call</div>
+      <div class="def-term">fork()</div>
+      <div class="def-body">An OS system call that <strong>creates an exact copy (clone) of the current process</strong>. No parameters. Returns 0 to the child process and the child's PID to the parent. Both continue running from the same point.</div>
     </div>
 
-    <!-- CONCEPT 8 -->
-    <div class="concept-block">
-      <div class="concept-header">
-        <span class="concept-num">08</span>
-        <span class="concept-title">Race Conditions — When Timing Goes Wrong</span>
-      </div>
-      <div class="concept-body">
-        <p>A race condition happens when the result of a computation depends on the <em>exact order</em> in which two processes access shared data — and that order is unpredictable.</p>
-        <p><strong>Simple example:</strong> Two processes share a counter variable (value = 5).</p>
-        <ul class="step-list">
-          <li><div class="step-num">1</div><div>Process A reads counter → gets 5</div></li>
-          <li><div class="step-num">2</div><div>Process B reads counter → also gets 5 (before A writes back)</div></li>
-          <li><div class="step-num">3</div><div>A adds 1, writes 6 back</div></li>
-          <li><div class="step-num">4</div><div>B adds 1, writes 6 back (should be 7!)</div></li>
-        </ul>
-        <p>The increment was lost! This is a race condition — rare, hard to reproduce, and very hard to debug.</p>
-        <div class="callout red">
-          <span class="callout-icon">🚨</span>
-          <span class="callout-text">Race conditions happen when shared data is <strong>both read and written</strong> by multiple processes without synchronization. Read-only shared data is safe.</span>
-        </div>
-      </div>
+    <div class="def-card">
+      <div class="def-tag">system call</div>
+      <div class="def-term">exec()</div>
+      <div class="def-body">An OS system call that <strong>replaces the current process with a new program</strong>. Requires parameters (what program to run). If successful, it never returns — the process IS now the new program.</div>
     </div>
 
-    <!-- CONCEPT 9 -->
-    <div class="concept-block">
-      <div class="concept-header">
-        <span class="concept-num">09</span>
-        <span class="concept-title">Semaphores — Solving Race Conditions</span>
-      </div>
-      <div class="concept-body">
-        <p>A semaphore is a special counter variable used to control access to a shared resource. The key rule: <strong>semaphore operations must be atomic</strong> — they cannot be split across processes. They're implemented using hardware instructions like <code>test-and-set()</code> or <code>swap()</code>.</p>
-        <ul class="bullet-list">
-          <li><strong>Binary Semaphore (Mutex)</strong> – Value is 0 (locked) or 1 (unlocked). Before entering a critical section, a process does a "wait" (decrement). After leaving, it does a "signal" (increment). Only one process can be inside at a time.</li>
-          <li><strong>Counting Semaphore</strong> – Value can be any non-negative integer. Useful when you have N instances of a resource (e.g., 3 printers). Processes decrement to claim one and increment to release it.</li>
-        </ul>
-        <div class="callout green">
-          <span class="callout-icon">✓</span>
-          <span class="callout-text">Think of a semaphore like a bathroom key at a gas station: you take the key (decrement), use the bathroom (critical section), return the key (increment). Nobody else can enter while you have the key.</span>
-        </div>
-      </div>
+    <div class="def-card">
+      <div class="def-tag">concurrency</div>
+      <div class="def-term">Thread</div>
+      <div class="def-body">A <strong>lightweight unit of execution inside a process</strong>. Multiple threads share the same process memory. Cheaper to create than a new process. Three types: User-Level (runtime manages), Kernel-Level (OS manages), Hybrid.</div>
     </div>
 
-    <!-- CONCEPT 10 -->
-    <div class="concept-block">
-      <div class="concept-header">
-        <span class="concept-num">10</span>
-        <span class="concept-title">Deadlock — When Processes Wait for Each Other Forever</span>
-      </div>
-      <div class="concept-body">
-        <p>Deadlock is a situation where two or more processes are stuck waiting for each other, and none can ever proceed.</p>
-        <p><strong>Classic example:</strong> Process A holds a lock on the printer and needs the scanner. Process B holds a lock on the scanner and needs the printer. Both wait forever.</p>
-        <p>For deadlock to occur, all three conditions must be present simultaneously:</p>
-        <ul class="bullet-list">
-          <li><strong>Mutual Exclusion</strong> – resources can't be shared simultaneously</li>
-          <li><strong>Hold-and-Wait</strong> – a process holds a resource while waiting for another</li>
-          <li><strong>Circular Wait</strong> – a cycle of dependency (A waits for B, B waits for A)</li>
-        </ul>
-
-        <p><strong>What can be done about deadlock?</strong></p>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Strategy</th><th>What it means</th><th>When used</th></tr></thead>
-            <tbody>
-              <tr><td>Prevent</td><td>Design the system so one of the 3 conditions can never occur</td><td>Safety-critical systems (pacemakers, space probes)</td></tr>
-              <tr><td>Avoid</td><td>Use algorithms that dynamically refuse resource allocations that could lead to deadlock</td><td>Complex real-time systems</td></tr>
-              <tr><td>Detect</td><td>Let it happen, but detect it and recover (kill a process, release resources)</td><td>General-purpose OS</td></tr>
-              <tr><td>Do Nothing</td><td>Assume it's rare enough not to matter</td><td>Desktop OSes (reboot fixes it)</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+    <div class="def-card">
+      <div class="def-tag">communication</div>
+      <div class="def-term">IPC — Inter-Process Communication</div>
+      <div class="def-body">Methods that let separate processes <strong>share data</strong>: shared files, shared memory, pipes, message queues.</div>
     </div>
 
-    <!-- CONCEPT 11 -->
-    <div class="concept-block">
-      <div class="concept-header">
-        <span class="concept-num">11</span>
-        <span class="concept-title">Circular Buffer — Shared Data Structure Between Processes</span>
-      </div>
-      <div class="concept-body">
-        <p>A circular buffer is a ring-shaped fixed-size array used when one process produces data and another consumes it. Think of a conveyor belt at a sushi restaurant — new plates are added at one end and taken from the other.</p>
-        <ul class="bullet-list">
-          <li>An <strong>IN pointer</strong> marks where new data is written (producer advances it after writing).</li>
-          <li>An <strong>OUT pointer</strong> marks where data is read (consumer advances it after reading).</li>
-          <li>The buffer is "circular" — when a pointer reaches the end, it wraps around to the beginning.</li>
-        </ul>
-        <p>The synchronization problem: if the producer moves the IN pointer <em>before</em> writing the actual data, the consumer might read garbage. Coordination (semaphores) is needed to prevent this.</p>
-      </div>
+    <div class="def-card">
+      <div class="def-tag">concurrency bug</div>
+      <div class="def-term">Race Condition</div>
+      <div class="def-body">An <strong>unpredictable bug caused by timing</strong>: two or more processes access shared data at the same time with at least one writing, and the result depends on who gets there first. Rare, hard to reproduce, dangerous.</div>
+      <div class="def-example">Two processes both read counter=5, both add 1, both write 6. Should be 7. One increment was lost.</div>
     </div>
 
-  </div>
-
-  <!-- ══════════════════════════════════════════ -->
-  <!--  SECTION 3: EXAM TIPS                     -->
-  <!-- ══════════════════════════════════════════ -->
-  <div id="exam" class="section">
-    <div class="section-header">
-      <div class="section-icon" style="background:rgba(255,140,107,0.1);border:1px solid rgba(255,140,107,0.25);">🎯</div>
-      <div>
-        <h2>Exam Tips & Likely Questions</h2>
-        <p>What your professor is most likely to test — organized by topic.</p>
-      </div>
+    <div class="def-card">
+      <div class="def-tag">synchronization</div>
+      <div class="def-term">Critical Region / Critical Section</div>
+      <div class="def-body">Code that <strong>accesses a shared resource</strong> and must only be executed by one process at a time. The goal of synchronization is to protect critical regions.</div>
     </div>
 
-    <!-- Scheduling -->
-    <div class="exam-section">
-      <div class="exam-section-title">⏱ Scheduling Algorithms</div>
-
-      <div class="tip-card">
-        <span class="tip-badge high">Very Likely</span>
-        <div class="tip-text"><strong>Trace through a scheduling algorithm by hand.</strong> Given a table of PIDs, arrival times, run times, and priorities — draw the Gantt chart and compute wait/turnaround times for each algorithm (FCFS, SJN, Priority, RR). Practice this until it's automatic.</div>
-      </div>
-      <div class="tip-card">
-        <span class="tip-badge high">Very Likely</span>
-        <div class="tip-text"><strong>Know the formulas cold:</strong> <em>Turnaround = Completion − Arrival</em> and <em>Wait = Turnaround − Run Time</em>. The exam will almost certainly ask you to calculate these.</div>
-      </div>
-      <div class="tip-card">
-        <span class="tip-badge high">Very Likely</span>
-        <div class="tip-text"><strong>Preemptive vs. Non-Preemptive</strong> — Be able to explain the difference and identify which algorithms are which. Know that Round Robin is always preemptive, and FCFS is always non-preemptive.</div>
-      </div>
-      <div class="tip-card">
-        <span class="tip-badge med">Likely</span>
-        <div class="tip-text"><strong>Compare algorithms:</strong> Which gives the best average wait time? (SJN/SRTF). Which is fairest? (Round Robin). Which is simplest? (FCFS). Be ready for "what are the tradeoffs" questions.</div>
-      </div>
-      <div class="tip-card">
-        <span class="tip-badge med">Likely</span>
-        <div class="tip-text"><strong>Context switch</strong> — Know that switching between processes has a cost (time). This is especially relevant for RR: if the time quantum is too small, you spend more time on context switches than actual work.</div>
-      </div>
+    <div class="def-card">
+      <div class="def-tag">synchronization tool</div>
+      <div class="def-term">Semaphore</div>
+      <div class="def-body">A special <strong>atomic counter used to control access to shared resources</strong>. Binary semaphore = 0/1 (mutex). Counting semaphore = integer ≥ 0. Operations must be atomic (uninterruptible) — implemented via hardware: <code>test-and-set()</code> or <code>swap()</code>.</div>
     </div>
 
-    <!-- Process Concepts -->
-    <div class="exam-section">
-      <div class="exam-section-title">⚙️ Processes &amp; PCB</div>
-
-      <div class="tip-card">
-        <span class="tip-badge high">Very Likely</span>
-        <div class="tip-text"><strong>List and explain process states</strong> (New → Ready → Running → Waiting → Exit). Be able to describe what causes a transition between states (e.g., what moves a process from Running to Waiting?).</div>
-      </div>
-      <div class="tip-card">
-        <span class="tip-badge high">Very Likely</span>
-        <div class="tip-text"><strong>What is a PCB and what does it contain?</strong> Be able to list at least 5 fields: PID, name, child process list, accounting info, open files, CPU registers/instruction pointer, memory pointers.</div>
-      </div>
-      <div class="tip-card">
-        <span class="tip-badge med">Likely</span>
-        <div class="tip-text"><strong>fork() vs exec()</strong> — Know the difference. fork() <em>copies</em> the process; exec() <em>replaces</em> it. Know that fork() returns 0 to the child and the child's PID to the parent.</div>
-      </div>
+    <div class="def-card">
+      <div class="def-tag">synchronization</div>
+      <div class="def-term">Mutex — Mutual Exclusion</div>
+      <div class="def-body">A binary lock ensuring <strong>only one process can be in a critical section at a time</strong>. A process "locks" it before entering and "unlocks" it when leaving. Others must wait while it's locked.</div>
     </div>
 
-    <!-- Synchronization -->
-    <div class="exam-section">
-      <div class="exam-section-title">🔒 Synchronization &amp; Race Conditions</div>
-
-      <div class="tip-card">
-        <span class="tip-badge high">Very Likely</span>
-        <div class="tip-text"><strong>Define race condition</strong> and give an example. The key elements: shared resource, multiple processes reading AND writing, unpredictable outcome based on timing.</div>
-      </div>
-      <div class="tip-card">
-        <span class="tip-badge high">Very Likely</span>
-        <div class="tip-text"><strong>What is a semaphore?</strong> Know the difference between binary (mutex) and counting semaphores. Know that semaphore operations must be <em>atomic</em> (single, uninterruptible) — this is why normal variables can't be used instead.</div>
-      </div>
-      <div class="tip-card">
-        <span class="tip-badge high">Very Likely</span>
-        <div class="tip-text"><strong>Critical region / critical section</strong> — Define it. Explain why only one process should be in the critical region at a time, and how semaphores enforce this.</div>
-      </div>
-      <div class="tip-card">
-        <span class="tip-badge med">Likely</span>
-        <div class="tip-text"><strong>Circular buffer race condition</strong> — Describe the specific problem: IN pointer moves before data is written, so the consumer reads garbage. The solution is coordination using semaphores.</div>
-      </div>
+    <div class="def-card">
+      <div class="def-tag">concurrency problem</div>
+      <div class="def-term">Deadlock</div>
+      <div class="def-body">A situation where <strong>two or more processes are each waiting for a resource held by the other</strong>, so none can ever proceed. Requires all three: Mutual Exclusion + Hold-and-Wait + Circular Wait.</div>
+      <div class="def-example">A holds printer lock, needs scanner. B holds scanner lock, needs printer. Both wait forever.</div>
     </div>
 
-    <!-- Deadlock -->
-    <div class="exam-section">
-      <div class="exam-section-title">💀 Deadlock</div>
-
-      <div class="tip-card">
-        <span class="tip-badge high">Very Likely</span>
-        <div class="tip-text"><strong>List and define the three deadlock conditions:</strong> Mutual Exclusion, Hold-and-Wait, Circular Wait. Understand that <em>all three</em> must be present for deadlock to occur — remove any one and deadlock cannot happen.</div>
-      </div>
-      <div class="tip-card">
-        <span class="tip-badge high">Very Likely</span>
-        <div class="tip-text"><strong>Four deadlock handling strategies</strong>: Prevent, Avoid, Detect, Do Nothing. Know when each is appropriate (e.g., prevention for safety-critical systems like pacemakers).</div>
-      </div>
-      <div class="tip-card">
-        <span class="tip-badge med">Likely</span>
-        <div class="tip-text"><strong>Give a concrete deadlock example</strong>: two processes, two resources, each holding one and waiting for the other. Be able to draw the cycle and identify which condition each requirement maps to.</div>
-      </div>
-    </div>
-
-    <!-- Threads / IPC -->
-    <div class="exam-section">
-      <div class="exam-section-title">🧵 Threads &amp; IPC</div>
-
-      <div class="tip-card">
-        <span class="tip-badge med">Likely</span>
-        <div class="tip-text"><strong>Three thread models</strong>: User-Level, Kernel-Level, Hybrid. Know the key difference — who manages the threads (language runtime vs. OS kernel) and how each interacts with multi-core CPUs.</div>
-      </div>
-      <div class="tip-card">
-        <span class="tip-badge med">Likely</span>
-        <div class="tip-text"><strong>IPC methods</strong> — Be able to list at least three (files, shared memory, pipes, message queues) and briefly explain each. Know the general coordination challenge that comes with shared memory IPC.</div>
-      </div>
-      <div class="tip-card">
-        <span class="tip-badge def">Definition</span>
-        <div class="tip-text"><strong>Process vs. Thread</strong> — A process is a full program in execution with its own memory space. A thread is a unit of execution within a process, sharing the process's memory. Threads are lighter-weight than processes.</div>
-      </div>
-    </div>
-
-    <!-- Quick Cheat Sheet -->
-    <div class="exam-section">
-      <div class="exam-section-title">📋 Quick Cheat Sheet</div>
-
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Term</th><th>One-Line Definition</th></tr></thead>
-          <tbody>
-            <tr><td>Process</td><td>A program currently running in memory</td></tr>
-            <tr><td>PCB</td><td>OS data structure storing everything about a process</td></tr>
-            <tr><td>PID</td><td>Unique number identifying a process</td></tr>
-            <tr><td>Scheduler</td><td>OS component that decides which process runs next</td></tr>
-            <tr><td>FCFS</td><td>Run in arrival order; non-preemptive</td></tr>
-            <tr><td>SJN/SRTF</td><td>Shortest job runs first; minimizes avg wait</td></tr>
-            <tr><td>Priority</td><td>Higher priority number runs first</td></tr>
-            <tr><td>Round Robin</td><td>Each process gets equal time slices; always preemptive</td></tr>
-            <tr><td>Turnaround Time</td><td>Completion Time − Arrival Time</td></tr>
-            <tr><td>Wait Time</td><td>Turnaround Time − Run Time</td></tr>
-            <tr><td>Context Switch</td><td>Cost (time) to pause one process and start another</td></tr>
-            <tr><td>fork()</td><td>Creates a copy of the current process</td></tr>
-            <tr><td>exec()</td><td>Replaces current process with a new program</td></tr>
-            <tr><td>Thread</td><td>Lightweight execution unit within a process</td></tr>
-            <tr><td>IPC</td><td>Methods for processes to exchange data</td></tr>
-            <tr><td>Race Condition</td><td>Bug from unpredictable timing when sharing data</td></tr>
-            <tr><td>Critical Region</td><td>Code that accesses shared resources; must be protected</td></tr>
-            <tr><td>Semaphore</td><td>Atomic counter used to control access to shared resources</td></tr>
-            <tr><td>Mutex</td><td>Binary semaphore — ensures one process in critical section</td></tr>
-            <tr><td>Deadlock</td><td>Processes waiting for each other forever; no progress</td></tr>
-            <tr><td>Circular Buffer</td><td>Ring-shaped buffer for passing data between processes</td></tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="def-card">
+      <div class="def-tag">data structure</div>
+      <div class="def-term">Circular Buffer</div>
+      <div class="def-body">A fixed-size ring-shaped buffer with an IN pointer (where producer writes) and an OUT pointer (where consumer reads). Used for IPC. Needs coordination to avoid reading unwritten data.</div>
     </div>
 
   </div>
 </div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- CONCEPTS                                      -->
+<!-- ════════════════════════════════════════════ -->
+<div id="concepts" class="section">
+  <div class="sec-head">
+    <h2>Concept Explanations</h2>
+    <p>Every idea explained from scratch, step by step.</p>
+  </div>
+
+  <!-- PCB -->
+  <div class="chapter">
+    <div class="chapter-header open" onclick="toggleChapter(this)">
+      <span class="ch-num">01</span>
+      <span class="ch-title">What the OS Manages — Processes, Memory, Files</span>
+      <span class="ch-arrow">▼</span>
+    </div>
+    <div class="chapter-body open">
+      <p class="body">An Operating System has three main jobs: managing <strong>processes</strong> (running programs), managing <strong>memory</strong> (RAM), and managing <strong>files</strong> (disk). Processes are the foundation — everything else only matters once a process is loaded and running.</p>
+      <p class="body">Even on a tiny single-core device (Raspberry Pi Zero, $5), there are typically <strong>dozens of processes</strong> in some state at any moment. Only one uses the CPU at a time — the rest are either ready and waiting, or blocked waiting for something.</p>
+      <p class="body">In Linux/Unix you can inspect processes with <code>top</code> or <code>ps -ax</code>, and kill one with <code>kill -9 PID</code>. These tools just make OS system calls — they aren't special or privileged.</p>
+    </div>
+  </div>
+
+  <!-- Process Lifecycle -->
+  <div class="chapter">
+    <div class="chapter-header" onclick="toggleChapter(this)">
+      <span class="ch-num">02</span>
+      <span class="ch-title">Process Lifecycle — The Five States</span>
+      <span class="ch-arrow">▼</span>
+    </div>
+    <div class="chapter-body">
+      <p class="body">A process doesn't jump straight from "created" to "done" — it moves through states:</p>
+      <div class="state-flow">
+        <div class="state-node sn-new">NEW</div>
+        <div class="state-arr">→</div>
+        <div class="state-node sn-ready">READY</div>
+        <div class="state-arr">→</div>
+        <div class="state-node sn-run">RUN</div>
+        <div class="state-arr">⇄</div>
+        <div class="state-node sn-wait">WAIT</div>
+        <div class="state-arr">→</div>
+        <div class="state-node sn-exit">EXIT</div>
+      </div>
+      <ul class="blist">
+        <li><strong>New</strong> — OS is loading the process from disk into memory. Not yet ready to run.</li>
+        <li><strong>Ready</strong> — Process is loaded, waiting in queue for the CPU. Could run, just hasn't been picked yet.</li>
+        <li><strong>Running</strong> — Scheduler picked this process; it is actively using the CPU right now.</li>
+        <li><strong>Waiting (Blocked)</strong> — Process needs something external: data from disk, a network packet, a timer. It steps off the CPU and waits. When the event fires, it goes back to Ready.</li>
+        <li><strong>Exit</strong> — Process finished. OS frees its memory, closes its files, removes its PCB.</li>
+      </ul>
+      <div class="callout blue">
+        <span class="callout-icon">📝</span>
+        <span>The PCB stores everything needed to pause and resume a process: CPU registers, instruction pointer (where it was in the code), open files, memory pointers.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- What is a Gantt Chart -->
+  <div class="chapter">
+    <div class="chapter-header" onclick="toggleChapter(this)">
+      <span class="ch-num">03</span>
+      <span class="ch-title">Reading &amp; Drawing Gantt Charts</span>
+      <span class="ch-arrow">▼</span>
+    </div>
+    <div class="chapter-body">
+      <p class="body">A <strong>Gantt chart</strong> is a timeline that shows which process is using the CPU at every moment. It's how we visualize scheduling.</p>
+      <p class="body"><strong>How to read one:</strong></p>
+      <ul class="blist">
+        <li>The <strong>horizontal axis is time</strong> — moves left to right. Numbers below mark time points (0, 1, 2, 3…).</li>
+        <li>Each <strong>colored/labeled block</strong> represents one process running. The block starts when the process starts and ends when it stops (finishes or is preempted).</li>
+        <li>The <strong>width</strong> of a block = how many time units that process ran in that stretch.</li>
+        <li>Blocks next to each other with no gap = CPU was continuously busy. Gaps (sometimes labeled "idle") = no process was running.</li>
+      </ul>
+
+      <p class="body"><strong>Example: P1 runs from time 0→3, P2 from 3→5, P3 from 5→7, P4 from 7→8.</strong></p>
+      <div class="gantt-section">
+        <div class="gantt-label">Gantt Chart (Type 1 — bar)</div>
+        <div class="gantt-wrap">
+          <div class="gantt">
+            <div class="gantt-block p1" style="width:108px">P1</div>
+            <div class="gantt-block p2" style="width:72px">P2</div>
+            <div class="gantt-block p3" style="width:72px">P3</div>
+            <div class="gantt-block p4" style="width:36px">P4</div>
+          </div>
+        </div>
+        <div style="position:relative;height:18px;margin-top:4px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);min-width:max-content;">
+          <span style="position:absolute;left:0px">0</span>
+          <span style="position:absolute;left:108px;transform:translateX(-50%)">3</span>
+          <span style="position:absolute;left:180px;transform:translateX(-50%)">5</span>
+          <span style="position:absolute;left:252px;transform:translateX(-50%)">7</span>
+          <span style="position:absolute;left:288px;transform:translateX(-50%)">8</span>
+        </div>
+      </div>
+
+      <p class="body"><strong>Type 2 — rows per process</strong> (also used in slides):</p>
+      <div class="timeline">
+        <div class="tl-row"><span class="tl-pid">P1</span><div class="tl-bar p1" style="width:108px">0 → 3</div></div>
+        <div class="tl-row"><span class="tl-pid">P2</span><div style="width:108px;height:26px;display:inline-block"></div><div class="tl-bar p2" style="width:72px">3 → 5</div></div>
+        <div class="tl-row"><span class="tl-pid">P3</span><div style="width:180px;height:26px;display:inline-block"></div><div class="tl-bar p3" style="width:72px">5 → 7</div></div>
+        <div class="tl-row"><span class="tl-pid">P4</span><div style="width:252px;height:26px;display:inline-block"></div><div class="tl-bar p4" style="width:36px">7→8</div></div>
+      </div>
+
+      <div class="callout green">
+        <span class="callout-icon">✓</span>
+        <span>Both representations mean the same thing. The row-per-process style makes it easy to see waiting time visually — the gap between a process arriving and its block starting = wait time.</span>
+      </div>
+
+      <p class="body"><strong>How to draw one yourself:</strong></p>
+      <ul class="blist">
+        <li>Draw a horizontal line for time (mark 0, 1, 2, 3… up to the total completion time).</li>
+        <li>Work through your scheduling algorithm step by step, noting which process runs at each time unit.</li>
+        <li>Draw a labeled block for each continuous run of a process.</li>
+        <li>Mark the start and end time of each block below the axis.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Fork / Exec -->
+  <div class="chapter">
+    <div class="chapter-header" onclick="toggleChapter(this)">
+      <span class="ch-num">04</span>
+      <span class="ch-title">Creating Processes — fork() and exec()</span>
+      <span class="ch-arrow">▼</span>
+    </div>
+    <div class="chapter-body">
+      <p class="body">In Unix/Linux, you create new processes with two system calls:</p>
+      <div class="solve-box">
+        <div class="solve-title">fork() — Clone the current process</div>
+        <div class="solve-steps">
+          <div class="solve-step"><div class="step-circle">1</div><div class="step-content">Process A calls <code>fork()</code></div></div>
+          <div class="solve-step"><div class="step-circle blue">2</div><div class="step-content">OS creates an almost-identical copy of A (same memory, same open files, same code position). This copy is called the <strong>child</strong>.</div></div>
+          <div class="solve-step"><div class="step-circle green">3</div><div class="step-content"><code>fork()</code> returns <strong>0 to the child</strong> and <strong>child's PID to the parent</strong>. This is how they know which one they are.</div></div>
+          <div class="solve-step"><div class="step-circle purp">4</div><div class="step-content">Both parent and child continue running from the line after the fork call.</div></div>
+        </div>
+      </div>
+      <div class="solve-box" style="margin-top:14px">
+        <div class="solve-title">exec() — Replace current process with a new program</div>
+        <div class="solve-steps">
+          <div class="solve-step"><div class="step-circle">1</div><div class="step-content">Process calls <code>exec()</code> with the name of a new program to run.</div></div>
+          <div class="solve-step"><div class="step-circle blue">2</div><div class="step-content">OS replaces the process's memory/code with the new program.</div></div>
+          <div class="solve-step"><div class="step-circle green">3</div><div class="step-content">If successful, <code>exec()</code> <strong>never returns</strong> — the process is now the new program. Same PID, new code.</div></div>
+        </div>
+      </div>
+      <div class="callout yellow">
+        <span class="callout-icon">💡</span>
+        <span><strong>Common pattern</strong>: call fork() first (creates a copy), then call exec() in the child (replaces child with a new program). Parent continues as before. This is how shells run commands.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Threads -->
+  <div class="chapter">
+    <div class="chapter-header" onclick="toggleChapter(this)">
+      <span class="ch-num">05</span>
+      <span class="ch-title">Threads — Lightweight Parallelism</span>
+      <span class="ch-arrow">▼</span>
+    </div>
+    <div class="chapter-body">
+      <p class="body">Threads are like mini-processes that live <em>inside</em> a process and share its memory. Creating a thread is much cheaper than creating a new process.</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Type</th><th>Who manages it</th><th>Knows about multi-core?</th><th>If one blocks…</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">User-Level</td><td>Language runtime (e.g., C library)</td><td>No — OS just sees one process</td><td>Whole process blocks</td></tr>
+            <tr><td class="mono">Kernel-Level</td><td>OS kernel directly</td><td>Yes — can run on multiple cores</td><td>Others keep running</td></tr>
+            <tr><td class="mono">Hybrid</td><td>Both: OS kernel threads, each running user threads</td><td>Yes — best of both</td><td>Depends on mapping</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- IPC -->
+  <div class="chapter">
+    <div class="chapter-header" onclick="toggleChapter(this)">
+      <span class="ch-num">06</span>
+      <span class="ch-title">IPC — How Processes Talk to Each Other</span>
+      <span class="ch-arrow">▼</span>
+    </div>
+    <div class="chapter-body">
+      <p class="body">When processes cooperate (e.g., A reads data → B processes it → C stores it), they need to pass data. This is IPC.</p>
+      <ul class="blist">
+        <li><strong>Files</strong> — A writes to a file, B reads from it. Simple but slow.</li>
+        <li><strong>Shared Memory</strong> — Both processes access the same RAM region. Very fast, but requires careful synchronization.</li>
+        <li><strong>Pipes</strong> — A one-directional data channel: one end writes, the other reads. Like Unix's <code>|</code> operator.</li>
+        <li><strong>Message Queues</strong> — Processes send and receive discrete messages via an OS-managed queue.</li>
+      </ul>
+      <div class="callout yellow">
+        <span class="callout-icon">⚠️</span>
+        <span>The key challenge: process B must not read data that process A hasn't finished writing yet. This requires <strong>coordination</strong> — which is where race conditions and semaphores become important.</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SCHEDULING — HOW TO SOLVE                     -->
+<!-- ════════════════════════════════════════════ -->
+<div id="scheduling" class="section">
+  <div class="sec-head">
+    <h2>Scheduling — How to Solve Step by Step</h2>
+    <p>Full walkthroughs for every algorithm, with the same example process table throughout.</p>
+  </div>
+
+  <div class="callout blue">
+    <span class="callout-icon">📌</span>
+    <div>
+      <strong>The example process table used throughout:</strong><br>
+      <div class="tbl-wrap" style="margin-top:10px">
+        <table>
+          <thead><tr><th>PID</th><th>Arrival Time</th><th>Run Time</th><th>Priority (bigger=higher)</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">P5</td><td>0</td><td>2</td><td>4</td></tr>
+            <tr><td class="mono">P6</td><td>0</td><td>1</td><td>2</td></tr>
+            <tr><td class="mono">P7</td><td>1</td><td>2</td><td>7</td></tr>
+            <tr><td class="mono">P8</td><td>2</td><td>1</td><td>8</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- FCFS -->
+  <div class="chapter">
+    <div class="chapter-header open" onclick="toggleChapter(this)">
+      <span class="ch-num">FCFS</span>
+      <span class="ch-title">First Come, First Served — Non-Preemptive</span>
+      <span class="ch-arrow">▼</span>
+    </div>
+    <div class="chapter-body open">
+      <p class="body"><strong>Rule:</strong> Run processes in arrival order. Once a process starts, it runs to completion. No interruptions.</p>
+
+      <div class="solve-box">
+        <div class="solve-title">Step-by-Step Solution</div>
+        <div class="solve-steps">
+          <div class="solve-step">
+            <div class="step-circle">1</div>
+            <div class="step-content"><strong>Sort by Arrival Time.</strong> Ties? Keep original order.<br>
+              Result: P5 (arr=0), P6 (arr=0), P7 (arr=1), P8 (arr=2)</div>
+          </div>
+          <div class="solve-step">
+            <div class="step-circle blue">2</div>
+            <div class="step-content"><strong>Time 0:</strong> Who has arrived? P5 and P6. P5 arrived first (or is listed first in a tie). P5 starts.<br>P5 runs for 2 units → P5 finishes at time <span class="hl">2</span>.</div>
+          </div>
+          <div class="solve-step">
+            <div class="step-circle green">3</div>
+            <div class="step-content"><strong>Time 2:</strong> P5 done. Who is in the ready queue? P6 (arrived at 0), P7 (arrived at 1). Next in arrival order = P6.<br>P6 runs for 1 unit → P6 finishes at time <span class="hl">3</span>.</div>
+          </div>
+          <div class="solve-step">
+            <div class="step-circle purp">4</div>
+            <div class="step-content"><strong>Time 3:</strong> Next in order = P7. P7 runs for 2 units → P7 finishes at time <span class="hl">5</span>.</div>
+          </div>
+          <div class="solve-step">
+            <div class="step-circle ora">5</div>
+            <div class="step-content"><strong>Time 5:</strong> Next = P8. P8 runs for 1 unit → P8 finishes at time <span class="hl">6</span>.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gantt-section" style="margin-top:18px">
+        <div class="gantt-label">Gantt Chart — FCFS: P5 → P6 → P7 → P8</div>
+        <div class="gantt-wrap">
+          <div class="gantt">
+            <div class="gantt-block p1" style="width:72px">P5</div>
+            <div class="gantt-block p2" style="width:36px">P6</div>
+            <div class="gantt-block p3" style="width:72px">P7</div>
+            <div class="gantt-block p4" style="width:36px">P8</div>
+          </div>
+        </div>
+        <div style="position:relative;height:18px;margin-top:4px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);">
+          <span style="left:0px;position:absolute">0</span>
+          <span style="left:72px;position:absolute;transform:translateX(-50%)">2</span>
+          <span style="left:108px;position:absolute;transform:translateX(-50%)">3</span>
+          <span style="left:180px;position:absolute;transform:translateX(-50%)">5</span>
+          <span style="left:216px;position:absolute;transform:translateX(-50%)">6</span>
+        </div>
+      </div>
+
+      <p class="body" style="margin-top:20px"><strong>Calculate Wait Time &amp; Turnaround Time:</strong></p>
+      <div class="formula">
+        <span class="flabel">Formulas</span>
+        Turnaround = Completion Time − Arrival Time<br>
+        Wait Time  = Turnaround Time − Run Time
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>PID</th><th>Arrival</th><th>Run</th><th>Completion</th><th>Turnaround</th><th>Wait</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">P5</td><td>0</td><td>2</td><td>2</td><td>2−0 = <strong>2</strong></td><td>2−2 = <strong>0</strong></td></tr>
+            <tr><td class="mono">P6</td><td>0</td><td>1</td><td>3</td><td>3−0 = <strong>3</strong></td><td>3−1 = <strong>2</strong></td></tr>
+            <tr><td class="mono">P7</td><td>1</td><td>2</td><td>5</td><td>5−1 = <strong>4</strong></td><td>4−2 = <strong>2</strong></td></tr>
+            <tr><td class="mono">P8</td><td>2</td><td>1</td><td>6</td><td>6−2 = <strong>4</strong></td><td>4−1 = <strong>3</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="body">Average Wait = (0+2+2+3)/4 = <strong>1.75</strong> &nbsp;|&nbsp; Average Turnaround = (2+3+4+4)/4 = <strong>3.25</strong></p>
+    </div>
+  </div>
+
+  <!-- SJN -->
+  <div class="chapter">
+    <div class="chapter-header" onclick="toggleChapter(this)">
+      <span class="ch-num">SJN</span>
+      <span class="ch-title">Shortest Job Next — Non-Preemptive</span>
+      <span class="ch-arrow">▼</span>
+    </div>
+    <div class="chapter-body">
+      <p class="body"><strong>Rule:</strong> When the CPU is free, look at all processes that have <em>already arrived</em>. Pick the one with the <strong>shortest run time</strong>. Run it to completion.</p>
+
+      <div class="solve-box">
+        <div class="solve-title">Step-by-Step Solution</div>
+        <div class="solve-steps">
+          <div class="solve-step">
+            <div class="step-circle">1</div>
+            <div class="step-content"><strong>Time 0:</strong> Arrived so far = P5 (run=2), P6 (run=1). Shortest = P6 (run=1). P6 starts.<br>P6 finishes at time <span class="hl">1</span>.</div>
+          </div>
+          <div class="solve-step">
+            <div class="step-circle blue">2</div>
+            <div class="step-content"><strong>Time 1:</strong> Arrived so far = P5 (run=2), P7 (run=2, just arrived). Tie! Both have run=2. Pick by arrival order → P5. P5 runs for 2 units, finishes at <span class="hl">3</span>.</div>
+          </div>
+          <div class="solve-step">
+            <div class="step-circle green">3</div>
+            <div class="step-content"><strong>Time 3:</strong> Arrived so far = P7 (run=2), P8 (run=1, arrived at 2). Shortest = P8. P8 runs for 1 unit, finishes at <span class="hl">4</span>.</div>
+          </div>
+          <div class="solve-step">
+            <div class="step-circle purp">4</div>
+            <div class="step-content"><strong>Time 4:</strong> Only P7 left. P7 runs for 2 units, finishes at <span class="hl">6</span>.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gantt-section">
+        <div class="gantt-label">Gantt Chart — SJN: P6 → P5 → P8 → P7</div>
+        <div class="gantt-wrap">
+          <div class="gantt">
+            <div class="gantt-block p2" style="width:36px">P6</div>
+            <div class="gantt-block p1" style="width:72px">P5</div>
+            <div class="gantt-block p4" style="width:36px">P8</div>
+            <div class="gantt-block p3" style="width:72px">P7</div>
+          </div>
+        </div>
+        <div style="position:relative;height:18px;margin-top:4px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);">
+          <span style="left:0px;position:absolute">0</span>
+          <span style="left:36px;position:absolute;transform:translateX(-50%)">1</span>
+          <span style="left:108px;position:absolute;transform:translateX(-50%)">3</span>
+          <span style="left:144px;position:absolute;transform:translateX(-50%)">4</span>
+          <span style="left:216px;position:absolute;transform:translateX(-50%)">6</span>
+        </div>
+      </div>
+
+      <div class="tbl-wrap" style="margin-top:18px">
+        <table>
+          <thead><tr><th>PID</th><th>Arrival</th><th>Run</th><th>Completion</th><th>Turnaround</th><th>Wait</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">P5</td><td>0</td><td>2</td><td>3</td><td>3</td><td>1</td></tr>
+            <tr><td class="mono">P6</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+            <tr><td class="mono">P7</td><td>1</td><td>2</td><td>6</td><td>5</td><td>3</td></tr>
+            <tr><td class="mono">P8</td><td>2</td><td>1</td><td>4</td><td>2</td><td>1</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="body">Average Wait = (1+0+3+1)/4 = <strong>1.25</strong> — better than FCFS's 1.75!</p>
+    </div>
+  </div>
+
+  <!-- Priority Non-Preemptive -->
+  <div class="chapter">
+    <div class="chapter-header" onclick="toggleChapter(this)">
+      <span class="ch-num">PRI</span>
+      <span class="ch-title">Priority Scheduling — Non-Preemptive</span>
+      <span class="ch-arrow">▼</span>
+    </div>
+    <div class="chapter-body">
+      <p class="body"><strong>Rule:</strong> When CPU is free, pick the <em>highest-priority</em> process that has arrived. <strong>Bigger number = higher priority</strong> in this course. Run to completion.</p>
+
+      <div class="solve-box">
+        <div class="solve-title">Step-by-Step Solution</div>
+        <div class="solve-steps">
+          <div class="solve-step">
+            <div class="step-circle">1</div>
+            <div class="step-content"><strong>Time 0:</strong> Arrived = P5 (pri=4), P6 (pri=2). Highest = P5. P5 runs for 2 units, finishes at <span class="hl">2</span>.</div>
+          </div>
+          <div class="solve-step">
+            <div class="step-circle blue">2</div>
+            <div class="step-content"><strong>Time 2:</strong> Arrived = P6 (pri=2), P7 (pri=7), P8 (pri=8). Highest = P8 (priority 8). P8 runs for 1 unit, finishes at <span class="hl">3</span>.</div>
+          </div>
+          <div class="solve-step">
+            <div class="step-circle green">3</div>
+            <div class="step-content"><strong>Time 3:</strong> Remaining = P6 (pri=2), P7 (pri=7). Highest = P7. P7 runs for 2 units, finishes at <span class="hl">5</span>.</div>
+          </div>
+          <div class="solve-step">
+            <div class="step-circle purp">4</div>
+            <div class="step-content"><strong>Time 5:</strong> Only P6 left. P6 runs for 1 unit, finishes at <span class="hl">6</span>.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gantt-section">
+        <div class="gantt-label">Gantt Chart — Priority (non-preemptive): P5 → P8 → P7 → P6</div>
+        <div class="gantt-wrap">
+          <div class="gantt">
+            <div class="gantt-block p1" style="width:72px">P5</div>
+            <div class="gantt-block p4" style="width:36px">P8</div>
+            <div class="gantt-block p3" style="width:72px">P7</div>
+            <div class="gantt-block p2" style="width:36px">P6</div>
+          </div>
+        </div>
+        <div style="position:relative;height:18px;margin-top:4px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);">
+          <span style="left:0px;position:absolute">0</span>
+          <span style="left:72px;position:absolute;transform:translateX(-50%)">2</span>
+          <span style="left:108px;position:absolute;transform:translateX(-50%)">3</span>
+          <span style="left:180px;position:absolute;transform:translateX(-50%)">5</span>
+          <span style="left:216px;position:absolute;transform:translateX(-50%)">6</span>
+        </div>
+      </div>
+
+      <div class="tbl-wrap" style="margin-top:18px">
+        <table>
+          <thead><tr><th>PID</th><th>Arrival</th><th>Run</th><th>Priority</th><th>Completion</th><th>Turnaround</th><th>Wait</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">P5</td><td>0</td><td>2</td><td>4</td><td>2</td><td>2</td><td>0</td></tr>
+            <tr><td class="mono">P6</td><td>0</td><td>1</td><td>2</td><td>6</td><td>6</td><td>5</td></tr>
+            <tr><td class="mono">P7</td><td>1</td><td>2</td><td>7</td><td>5</td><td>4</td><td>2</td></tr>
+            <tr><td class="mono">P8</td><td>2</td><td>1</td><td>8</td><td>3</td><td>1</td><td>0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout yellow">
+        <span class="callout-icon">⚠️</span>
+        <span>Notice P6 (lowest priority) waits a very long time! Low-priority processes can "starve" if high-priority ones keep arriving. That's a known downside of priority scheduling.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Priority Preemptive -->
+  <div class="chapter">
+    <div class="chapter-header" onclick="toggleChapter(this)">
+      <span class="ch-num">PRI-P</span>
+      <span class="ch-title">Priority Scheduling — Preemptive</span>
+      <span class="ch-arrow">▼</span>
+    </div>
+    <div class="chapter-body">
+      <p class="body"><strong>Rule:</strong> Same as priority, but now: if a higher-priority process arrives while one is running, <strong>immediately stop the current process</strong> and run the new one.</p>
+
+      <div class="solve-box">
+        <div class="solve-title">Step-by-Step Solution</div>
+        <div class="solve-steps">
+          <div class="solve-step">
+            <div class="step-circle">1</div>
+            <div class="step-content"><strong>Time 0:</strong> Arrived = P5 (pri=4), P6 (pri=2). Highest = P5. P5 starts.</div>
+          </div>
+          <div class="solve-step">
+            <div class="step-circle blue">2</div>
+            <div class="step-content"><strong>Time 1:</strong> P7 arrives (pri=7). P7 > P5's priority 4 → <strong>preempt P5!</strong> P5 has run 1 unit, has 1 remaining. P7 starts.</div>
+          </div>
+          <div class="solve-step">
+            <div class="step-circle green">3</div>
+            <div class="step-content"><strong>Time 2:</strong> P8 arrives (pri=8). P8 > P7's priority 7 → <strong>preempt P7!</strong> P7 has run 1 unit, has 1 remaining. P8 starts. P8 runs 1 unit, finishes at <span class="hl">3</span>.</div>
+          </div>
+          <div class="solve-step">
+            <div class="step-circle purp">4</div>
+            <div class="step-content"><strong>Time 3:</strong> Ready queue = P5 (rem=1, pri=4), P6 (rem=1, pri=2), P7 (rem=1, pri=7). Highest = P7 (pri=7). P7 runs 1 unit, finishes at <span class="hl">4</span>.</div>
+          </div>
+          <div class="solve-step">
+            <div class="step-circle ora">5</div>
+            <div class="step-content"><strong>Time 4:</strong> Ready = P5 (pri=4), P6 (pri=2). Highest = P5. P5 runs 1 unit, finishes at <span class="hl">5</span>. Then P6 runs 1 unit, finishes at <span class="hl">6</span>.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gantt-section">
+        <div class="gantt-label">Gantt Chart — Priority Preemptive: P5(1) → P7(1) → P8(1) → P7(1) → P5(1) → P6(1)</div>
+        <div class="gantt-wrap">
+          <div class="gantt">
+            <div class="gantt-block p1" style="width:36px">P5</div>
+            <div class="gantt-block p3" style="width:36px">P7</div>
+            <div class="gantt-block p4" style="width:36px">P8</div>
+            <div class="gantt-block p3" style="width:36px">P7</div>
+            <div class="gantt-block p1" style="width:36px">P5</div>
+            <div class="gantt-block p2" style="width:36px">P6</div>
+          </div>
+        </div>
+        <div style="position:relative;height:18px;margin-top:4px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);">
+          <span style="left:0px;position:absolute">0</span>
+          <span style="left:36px;position:absolute;transform:translateX(-50%)">1</span>
+          <span style="left:72px;position:absolute;transform:translateX(-50%)">2</span>
+          <span style="left:108px;position:absolute;transform:translateX(-50%)">3</span>
+          <span style="left:144px;position:absolute;transform:translateX(-50%)">4</span>
+          <span style="left:180px;position:absolute;transform:translateX(-50%)">5</span>
+          <span style="left:216px;position:absolute;transform:translateX(-50%)">6</span>
+        </div>
+      </div>
+
+      <div class="tbl-wrap" style="margin-top:18px">
+        <table>
+          <thead><tr><th>PID</th><th>Arrival</th><th>Run</th><th>Priority</th><th>Completion</th><th>Turnaround</th><th>Wait</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">P5</td><td>0</td><td>2</td><td>4</td><td>5</td><td>5</td><td>3</td></tr>
+            <tr><td class="mono">P6</td><td>0</td><td>1</td><td>2</td><td>6</td><td>6</td><td>5</td></tr>
+            <tr><td class="mono">P7</td><td>1</td><td>2</td><td>7</td><td>4</td><td>3</td><td>1</td></tr>
+            <tr><td class="mono">P8</td><td>2</td><td>1</td><td>8</td><td>3</td><td>1</td><td>0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout blue">
+        <span class="callout-icon">📝</span>
+        <span>For preemptive algorithms, <strong>wait time = all the time the process spent in the ready queue</strong> (not running). Easiest calculation: Wait = Turnaround − Run Time still works perfectly.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Round Robin -->
+  <div class="chapter">
+    <div class="chapter-header" onclick="toggleChapter(this)">
+      <span class="ch-num">RR</span>
+      <span class="ch-title">Round Robin — Always Preemptive (Quantum = 1)</span>
+      <span class="ch-arrow">▼</span>
+    </div>
+    <div class="chapter-body">
+      <p class="body"><strong>Rule:</strong> Every process gets exactly <strong>1 time unit</strong> (the quantum) before the next process gets its turn. Goes in a rotating cycle. If a process finishes before its quantum is up, the next one starts immediately.</p>
+      <p class="body"><strong>Important:</strong> When a new process arrives at the same time a process finishes its quantum, the new arrival joins the queue first, then the interrupted process goes to the back.</p>
+
+      <div class="solve-box">
+        <div class="solve-title">Step-by-Step (Quantum = 1)</div>
+        <div class="solve-steps">
+          <div class="solve-step">
+            <div class="step-circle">1</div>
+            <div class="step-content"><strong>Time 0:</strong> Ready queue = [P5, P6] (both arrived at 0; P5 listed first). Run P5 for 1 unit. P5 has 1 unit remaining. End of quantum at time 1.</div>
+          </div>
+          <div class="solve-step">
+            <div class="step-circle blue">2</div>
+            <div class="step-content"><strong>Time 1:</strong> P7 arrived! Queue = [P6, P7, P5] (P6 was waiting, P7 just arrived, P5 goes to back). Run P6 for 1 unit. P6 has 0 remaining → <strong>P6 finishes at time 2.</strong></div>
+          </div>
+          <div class="solve-step">
+            <div class="step-circle green">3</div>
+            <div class="step-content"><strong>Time 2:</strong> P8 arrived! Queue = [P7, P5, P8]. Run P7 for 1 unit. P7 has 1 remaining. End of quantum at time 3.</div>
+          </div>
+          <div class="solve-step">
+            <div class="step-circle purp">4</div>
+            <div class="step-content"><strong>Time 3:</strong> Queue = [P5, P8, P7]. Run P5 for 1 unit. P5 has 0 remaining → <strong>P5 finishes at time 4.</strong></div>
+          </div>
+          <div class="solve-step">
+            <div class="step-circle ora">5</div>
+            <div class="step-content"><strong>Time 4:</strong> Queue = [P8, P7]. Run P8 for 1 unit. P8 has 0 remaining → <strong>P8 finishes at time 5.</strong></div>
+          </div>
+          <div class="solve-step">
+            <div class="step-circle">6</div>
+            <div class="step-content"><strong>Time 5:</strong> Queue = [P7]. Run P7 for 1 unit. P7 has 0 remaining → <strong>P7 finishes at time 6.</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gantt-section">
+        <div class="gantt-label">Gantt Chart — Round Robin (Q=1): P5→P6→P7→P5→P8→P7</div>
+        <div class="gantt-wrap">
+          <div class="gantt">
+            <div class="gantt-block p1" style="width:36px">P5</div>
+            <div class="gantt-block p2" style="width:36px">P6</div>
+            <div class="gantt-block p3" style="width:36px">P7</div>
+            <div class="gantt-block p1" style="width:36px">P5</div>
+            <div class="gantt-block p4" style="width:36px">P8</div>
+            <div class="gantt-block p3" style="width:36px">P7</div>
+          </div>
+        </div>
+        <div style="position:relative;height:18px;margin-top:4px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);">
+          <span style="left:0;position:absolute">0</span>
+          <span style="left:36px;position:absolute;transform:translateX(-50%)">1</span>
+          <span style="left:72px;position:absolute;transform:translateX(-50%)">2</span>
+          <span style="left:108px;position:absolute;transform:translateX(-50%)">3</span>
+          <span style="left:144px;position:absolute;transform:translateX(-50%)">4</span>
+          <span style="left:180px;position:absolute;transform:translateX(-50%)">5</span>
+          <span style="left:216px;position:absolute;transform:translateX(-50%)">6</span>
+        </div>
+      </div>
+
+      <div class="tbl-wrap" style="margin-top:18px">
+        <table>
+          <thead><tr><th>PID</th><th>Arrival</th><th>Run</th><th>Completion</th><th>Turnaround</th><th>Wait</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">P5</td><td>0</td><td>2</td><td>4</td><td>4</td><td>2</td></tr>
+            <tr><td class="mono">P6</td><td>0</td><td>1</td><td>2</td><td>2</td><td>1</td></tr>
+            <tr><td class="mono">P7</td><td>1</td><td>2</td><td>6</td><td>5</td><td>3</td></tr>
+            <tr><td class="mono">P8</td><td>2</td><td>1</td><td>5</td><td>3</td><td>2</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout green">
+        <span class="callout-icon">✓</span>
+        <span><strong>Key RR trick for managing the queue:</strong> At each time tick, first check if anything new arrived, then pick the next process in queue order. Always rotate — the process that just ran goes to the <em>back</em> of the queue if it has remaining time.</span>
+      </div>
+
+      <div class="divider"></div>
+      <p class="body"><strong>Algorithm Comparison — Same Processes, All Methods:</strong></p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Algorithm</th><th>Order</th><th>Avg Wait</th><th>Avg Turnaround</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">FCFS</td><td>P5→P6→P7→P8</td><td>1.75</td><td>3.25</td></tr>
+            <tr><td class="mono">SJN</td><td>P6→P5→P8→P7</td><td>1.25</td><td>2.75</td></tr>
+            <tr><td class="mono">Priority (NP)</td><td>P5→P8→P7→P6</td><td>3.0</td><td>3.75</td></tr>
+            <tr><td class="mono">Priority (P)</td><td>P5,P7,P8,P7,P5,P6</td><td>2.25</td><td>3.75</td></tr>
+            <tr><td class="mono">Round Robin</td><td>P5,P6,P7,P5,P8,P7</td><td>2.0</td><td>3.5</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SYNC & DEADLOCK                              -->
+<!-- ════════════════════════════════════════════ -->
+<div id="sync" class="section">
+  <div class="sec-head">
+    <h2>Synchronization &amp; Deadlock</h2>
+    <p>Race conditions, semaphores, and deadlock — explained clearly.</p>
+  </div>
+
+  <div class="chapter">
+    <div class="chapter-header open" onclick="toggleChapter(this)">
+      <span class="ch-num">01</span>
+      <span class="ch-title">Race Conditions — When Timing Goes Wrong</span>
+      <span class="ch-arrow">▼</span>
+    </div>
+    <div class="chapter-body open">
+      <p class="body">A race condition is an <strong>unpredictable bug caused by two processes accessing shared data at the wrong time</strong>. The outcome depends on who gets to the data first — like a race.</p>
+      <p class="body"><strong>Classic example — Lost Update:</strong></p>
+      <div class="solve-box">
+        <div class="solve-title">Shared counter = 5. Two processes both try to add 1.</div>
+        <div class="solve-steps">
+          <div class="solve-step"><div class="step-circle">1</div><div class="step-content">Process A reads counter → gets <strong>5</strong></div></div>
+          <div class="solve-step"><div class="step-circle blue">2</div><div class="step-content">Process B reads counter → also gets <strong>5</strong> (A hasn't written back yet!)</div></div>
+          <div class="solve-step"><div class="step-circle green">3</div><div class="step-content">Process A computes 5+1=6, writes <strong>6</strong> back.</div></div>
+          <div class="solve-step"><div class="step-circle purp">4</div><div class="step-content">Process B computes 5+1=6, writes <strong>6</strong> back. But it should be 7! One increment was lost.</div></div>
+        </div>
+      </div>
+      <div class="callout red">
+        <span class="callout-icon">🚨</span>
+        <span>Race conditions only happen on data that is <strong>both read and written</strong> by multiple processes. Read-only shared data is safe — no race condition possible.</span>
+      </div>
+      <p class="body">The fix: protect the read-modify-write operation so only one process can do it at a time. The area of code doing this is the <strong>critical section</strong>.</p>
+    </div>
+  </div>
+
+  <div class="chapter">
+    <div class="chapter-header" onclick="toggleChapter(this)">
+      <span class="ch-num">02</span>
+      <span class="ch-title">Semaphores — The Solution to Race Conditions</span>
+      <span class="ch-arrow">▼</span>
+    </div>
+    <div class="chapter-body">
+      <p class="body">A semaphore is a special integer variable with two atomic (uninterruptible) operations: <strong>wait (P)</strong> — decrement and block if result < 0 — and <strong>signal (V)</strong> — increment and wake a waiting process.</p>
+      <p class="body"><strong>Why must operations be atomic?</strong> If the decrement itself could be interrupted, the semaphore could suffer its own race condition. Hardware provides special instructions (<code>test-and-set()</code>, <code>swap()</code>) to make this one single uninterruptible step.</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Type</th><th>Values</th><th>Use case</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">Binary (Mutex)</td><td>0 or 1</td><td>Protect a critical section — one process at a time</td></tr>
+            <tr><td class="mono">Counting</td><td>0, 1, 2, 3…</td><td>Manage N identical resources (e.g., 3 printers)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="body"><strong>How a mutex works in practice:</strong></p>
+      <ul class="blist">
+        <li><strong>Before entering</strong> the critical section: call <em>wait()</em> — if semaphore = 1, it becomes 0 and you proceed. If already 0, you block and wait.</li>
+        <li><strong>After leaving</strong> the critical section: call <em>signal()</em> — semaphore becomes 1 again and any waiting process is woken up.</li>
+      </ul>
+      <div class="callout green">
+        <span class="callout-icon">🔑</span>
+        <span>Analogy: a bathroom with one key. Take the key (wait), use the bathroom (critical section), return the key (signal). Nobody can enter while you have the key.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="chapter">
+    <div class="chapter-header" onclick="toggleChapter(this)">
+      <span class="ch-num">03</span>
+      <span class="ch-title">Deadlock — When Processes Wait Forever</span>
+      <span class="ch-arrow">▼</span>
+    </div>
+    <div class="chapter-body">
+      <p class="body">Deadlock happens when two or more processes are permanently blocked, each waiting for a resource held by the other. It requires <em>all three</em> conditions at once:</p>
+      <ul class="blist">
+        <li><strong>Mutual Exclusion</strong> — only one process can hold a resource at a time (normal for locked resources)</li>
+        <li><strong>Hold-and-Wait</strong> — a process holds one resource and waits for another without releasing the first</li>
+        <li><strong>Circular Wait</strong> — A waits for B, B waits for A (a cycle)</li>
+      </ul>
+      <div class="callout red">
+        <span class="callout-icon">💀</span>
+        <span><strong>Example:</strong> Process A locks the Printer, then asks for the Scanner. Process B locks the Scanner, then asks for the Printer. Both are stuck waiting forever — deadlock!</span>
+      </div>
+      <p class="body"><strong>Four strategies to handle deadlock:</strong></p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Strategy</th><th>What happens</th><th>Used when</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">Prevent</td><td>Design system so at least one of the 3 conditions can never occur</td><td>Safety-critical: pacemakers, space probes, undersea systems</td></tr>
+            <tr><td class="mono">Avoid</td><td>Dynamically refuse allocations that could lead to deadlock (e.g., Banker's Algorithm)</td><td>Systems with known resource needs in advance</td></tr>
+            <tr><td class="mono">Detect</td><td>Let deadlock happen, then detect and recover (kill a process, release resources)</td><td>General-purpose operating systems</td></tr>
+            <tr><td class="mono">Do Nothing</td><td>Ignore it — reboot when it occurs. Acceptable if very rare.</td><td>Consumer desktop OSes</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout purple">
+        <span class="callout-icon">💡</span>
+        <span>Remove any one of the three conditions and deadlock <em>cannot</em> occur. Prevention means structuring the system to violate at least one condition permanently.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="chapter">
+    <div class="chapter-header" onclick="toggleChapter(this)">
+      <span class="ch-num">04</span>
+      <span class="ch-title">Circular Buffer — Shared Memory Coordination Problem</span>
+      <span class="ch-arrow">▼</span>
+    </div>
+    <div class="chapter-body">
+      <p class="body">A circular buffer is a fixed-size ring of memory used to pass data from a producer process to a consumer process. It has two pointers: <strong>IN</strong> (where the producer writes next) and <strong>OUT</strong> (where the consumer reads next).</p>
+      <p class="body"><strong>The race condition problem:</strong> The producer moves the IN pointer to a new slot to "claim" it — but it hasn't written the actual data yet. If the consumer checks the buffer at this exact moment, it sees the IN pointer moved and thinks there's new data — but reads garbage or nothing.</p>
+      <p class="body"><strong>The fix:</strong> Use a semaphore so the consumer cannot read until the producer has fully written the data. The consumer must wait until the semaphore signals that data is ready.</p>
+      <div class="callout blue">
+        <span class="callout-icon">📝</span>
+        <span>The circular buffer is a key example of why IPC and shared memory always need synchronization — even a simple pointer move can create a race condition.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- EXAM TIPS                                    -->
+<!-- ════════════════════════════════════════════ -->
+<div id="exam" class="section">
+  <div class="sec-head">
+    <h2>Exam Tips &amp; Likely Questions</h2>
+    <p>What you'll almost certainly see on the test — by topic.</p>
+  </div>
+
+  <div class="exam-group">
+    <div class="exam-group-title">📊 Scheduling Algorithms</div>
+    <div class="tip-card"><span class="tip-badge h">★★★ Very Likely</span><div class="tip-text"><strong>Trace a scheduling algorithm by hand.</strong> Given a process table, produce the Gantt chart and calculate wait/turnaround times. Practice all 5 types (FCFS, SJN, Priority NP, Priority P, RR).</div></div>
+    <div class="tip-card"><span class="tip-badge h">★★★ Very Likely</span><div class="tip-text"><strong>Know the formulas:</strong> Turnaround = Completion − Arrival, Wait = Turnaround − Run Time. These apply to every algorithm — preemptive or not.</div></div>
+    <div class="tip-card"><span class="tip-badge h">★★★ Very Likely</span><div class="tip-text"><strong>Preemptive vs. Non-preemptive.</strong> Be able to name which algorithms are which and explain the difference. FCFS = always non-preemptive. RR = always preemptive.</div></div>
+    <div class="tip-card"><span class="tip-badge m">★★ Likely</span><div class="tip-text"><strong>Read and draw a Gantt chart.</strong> Know that the x-axis is time, each block is a process running, and the block width = run duration.</div></div>
+    <div class="tip-card"><span class="tip-badge m">★★ Likely</span><div class="tip-text"><strong>Context switch cost.</strong> Know it takes time to switch processes. Relevant for RR: if quantum is too small → too many context switches → wasted time.</div></div>
+    <div class="tip-card"><span class="tip-badge m">★★ Likely</span><div class="tip-text"><strong>Starvation.</strong> Low-priority processes can wait forever in priority scheduling if high-priority ones keep arriving. RR prevents this.</div></div>
+  </div>
+
+  <div class="exam-group">
+    <div class="exam-group-title">⚙️ Processes, States, PCB</div>
+    <div class="tip-card"><span class="tip-badge h">★★★ Very Likely</span><div class="tip-text"><strong>List and define the 5 process states</strong> with the transitions between them. E.g., what causes Running → Waiting? (Waiting for I/O.)</div></div>
+    <div class="tip-card"><span class="tip-badge h">★★★ Very Likely</span><div class="tip-text"><strong>What is a PCB and what does it contain?</strong> List at least 5 fields. PID, name, child list, accounting info, open files, CPU registers/instruction pointer, memory pointers.</div></div>
+    <div class="tip-card"><span class="tip-badge m">★★ Likely</span><div class="tip-text"><strong>fork() vs exec():</strong> fork = clone; exec = replace. fork returns 0 to child, child PID to parent. exec never returns if successful.</div></div>
+  </div>
+
+  <div class="exam-group">
+    <div class="exam-group-title">🔒 Race Conditions &amp; Semaphores</div>
+    <div class="tip-card"><span class="tip-badge h">★★★ Very Likely</span><div class="tip-text"><strong>Define race condition + give an example.</strong> Two processes, shared counter, one increment lost. Mention: requires both reading AND writing to shared data.</div></div>
+    <div class="tip-card"><span class="tip-badge h">★★★ Very Likely</span><div class="tip-text"><strong>What is a semaphore?</strong> Binary vs counting. Why must operations be atomic? (Otherwise the semaphore itself could have a race condition.)</div></div>
+    <div class="tip-card"><span class="tip-badge h">★★★ Very Likely</span><div class="tip-text"><strong>What is a critical section?</strong> Code accessing shared resources. Only one process should be in it at a time. Semaphores enforce this.</div></div>
+  </div>
+
+  <div class="exam-group">
+    <div class="exam-group-title">💀 Deadlock</div>
+    <div class="tip-card"><span class="tip-badge h">★★★ Very Likely</span><div class="tip-text"><strong>Three deadlock conditions:</strong> Mutual Exclusion, Hold-and-Wait, Circular Wait. All three must be present. Remove one → no deadlock.</div></div>
+    <div class="tip-card"><span class="tip-badge h">★★★ Very Likely</span><div class="tip-text"><strong>Four deadlock strategies:</strong> Prevent, Avoid, Detect, Do Nothing. Know when each is appropriate (e.g., Prevent for safety-critical systems like pacemakers).</div></div>
+    <div class="tip-card"><span class="tip-badge m">★★ Likely</span><div class="tip-text"><strong>Give a concrete deadlock example.</strong> Process A has R1 needs R2; Process B has R2 needs R1. Name which condition each maps to.</div></div>
+  </div>
+
+  <div class="exam-group">
+    <div class="exam-group-title">🧵 Threads &amp; IPC</div>
+    <div class="tip-card"><span class="tip-badge m">★★ Likely</span><div class="tip-text"><strong>Three thread types:</strong> User-Level (runtime manages, can't use multi-core), Kernel-Level (OS manages, true parallelism), Hybrid (both).</div></div>
+    <div class="tip-card"><span class="tip-badge m">★★ Likely</span><div class="tip-text"><strong>IPC methods:</strong> Files, Shared Memory, Pipes, Message Queues. Know that shared memory is fastest but needs synchronization.</div></div>
+  </div>
+
+  <div class="exam-group">
+    <div class="exam-group-title">📋 Quick Cheat Sheet</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Term</th><th>One-Line Definition</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">Process</td><td>Program currently running in memory</td></tr>
+          <tr><td class="mono">PCB</td><td>OS data structure with all info about a process</td></tr>
+          <tr><td class="mono">Scheduler</td><td>OS part that decides which process runs next</td></tr>
+          <tr><td class="mono">FCFS</td><td>Arrival order; non-preemptive; simple</td></tr>
+          <tr><td class="mono">SJN</td><td>Shortest run time first; best avg wait time</td></tr>
+          <tr><td class="mono">Priority</td><td>Higher number = higher priority; can be preemptive or not</td></tr>
+          <tr><td class="mono">Round Robin</td><td>Equal time slices; always preemptive; fair</td></tr>
+          <tr><td class="mono">Turnaround</td><td>Completion − Arrival</td></tr>
+          <tr><td class="mono">Wait Time</td><td>Turnaround − Run Time</td></tr>
+          <tr><td class="mono">Context Switch</td><td>Cost of pausing one process and starting another</td></tr>
+          <tr><td class="mono">Gantt Chart</td><td>Timeline showing which process ran when</td></tr>
+          <tr><td class="mono">fork()</td><td>Clones current process; returns 0 to child, PID to parent</td></tr>
+          <tr><td class="mono">exec()</td><td>Replaces current process with new program; never returns</td></tr>
+          <tr><td class="mono">Thread</td><td>Lightweight execution unit inside a process; shares memory</td></tr>
+          <tr><td class="mono">IPC</td><td>Methods for processes to share data (files, pipes, shared mem)</td></tr>
+          <tr><td class="mono">Race Condition</td><td>Bug from timing — shared data read+written unpredictably</td></tr>
+          <tr><td class="mono">Critical Section</td><td>Code touching shared resource; must have only one process at a time</td></tr>
+          <tr><td class="mono">Semaphore</td><td>Atomic counter controlling access to shared resources</td></tr>
+          <tr><td class="mono">Mutex</td><td>Binary semaphore — one process in critical section at a time</td></tr>
+          <tr><td class="mono">Deadlock</td><td>Circular wait — processes blocked forever waiting for each other</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</div><!-- /content -->
 
 <script>
 function showTab(id, btn) {
@@ -998,6 +1356,16 @@ function showTab(id, btn) {
   btn.classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+function toggleChapter(header) {
+  const body = header.nextElementSibling;
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  header.classList.toggle('open', !isOpen);
+}
+// Open first chapter in each section by default
+document.querySelectorAll('.chapter-header.open').forEach(h => {
+  h.nextElementSibling.classList.add('open');
+});
 </script>
 </body>
 </html>
